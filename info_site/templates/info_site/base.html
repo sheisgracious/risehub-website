@@ -1,11 +1,10 @@
-<!-- info_site/templates/base.html -->
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ascend Hub | Digital Literacy 101 for Seniors</title>
+    <title>Rise Hub | Digital Literacy for Seniors</title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
@@ -17,7 +16,9 @@
     <header>
       <div class="container header-container">
         <div class="logo">
-          <img src="{% static 'Rise_Hub_Logo.png' %}" alt="Rise Hub Logo" />
+          <a href="{% url 'home' %}" style="text-decoration: none; display: flex; align-items: center;">
+            <img src="{% static 'Rise_Hub_Logo.png' %}" alt="Rise Hub Logo" />
+          </a>
         </div>
 
         <button class="mobile-menu-btn">
@@ -26,88 +27,34 @@
 
         <nav>
           <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#course">Course</a></li>
-            <li><a href="#syllabus">Syllabus</a></li>
-            <li><a href="#webinar">Free Webinar</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'home' %}#course">Course</a></li>
+            <li><a href="{% url 'home' %}#syllabus">Syllabus</a></li>
+            <li><a href="{% url 'contact' %}">Contact</a></li>
+            {% if user.is_authenticated %}
+              <li><a href="{% url 'student_dashboard' %}">Dashboard</a></li>
+            {% endif %}
           </ul>
         </nav>
 
         <div class="auth-buttons">
-          <button class="btn btn-outline" id="login-btn">Login</button>
-          <button class="btn btn-primary" id="signup-btn">Sign Up</button>
+          {% if user.is_authenticated %}
+            <span style="color: var(--text); margin-right: 15px; display: flex; align-items: center;">
+              <i class="fas fa-user-circle" style="margin-right: 5px;"></i>
+              {{ user.first_name|default:user.username }}
+            </span>
+            <a href="{% url 'logout' %}" class="btn btn-outline" style="text-decoration: none;">Logout</a>
+          {% else %}
+            <a href="{% url 'login' %}" class="btn btn-outline" style="text-decoration: none;">Login</a>
+            <a href="{% url 'student_register' %}" class="btn btn-primary" style="text-decoration: none;">Sign Up</a>
+          {% endif %}
         </div>
       </div>
     </header>
+
+    {% block content %}
+    {% endblock content %}
+
+    <script src="{% static 'script.js' %}"></script>
   </body>
-  {% block content %} {% endblock content %}
-      <!-- Footer -->
-    <footer id="contact">
-      <div class="container">
-        <div class="footer-container">
-          <div class="footer-about">
-            <div class="footer-logo">
-              <img
-                src="https://via.placeholder.com/40x40"
-                alt="Rise Hub Logo"
-              />
-              <h2>Rise Hub</h2>
-            </div>
-            <p>
-              Bridging the digital divide with providing essential tech skills
-              through structured, supportive, and accessible digital education.
-            </p>
-            <div class="social-links">
-              <a href="#"><i class="fab fa-facebook-f"></i></a>
-              <a href="#"><i class="fab fa-twitter"></i></a>
-              <a href="#"><i class="fab fa-instagram"></i></a>
-              <a href="#"><i class="fab fa-linkedin-in"></i></a>
-              <a href="#"><i class="fab fa-youtube"></i></a>
-            </div>
-          </div>
-
-          <div class="footer-links">
-            <h3>Quick Links</h3>
-            <ul>
-              <li><a href="#home">Home</a></li>
-              <li><a href="#course">Course</a></li>
-              <li><a href="#syllabus">Syllabus</a></li>
-              <li><a href="#webinar">Free Webinar</a></li>
-              <li><a href="#contact">Contact</a></li>
-            </ul>
-          </div>
-
-          <!-- <div class="footer-links">
-            <h3>Course Details</h3>
-            <ul>
-              <li><a href="#">Curriculum</a></li>
-              <li><a href="#">Schedule</a></li>
-              <li><a href="#">Pricing</a></li>
-              <li><a href="#">Flashcard System</a></li>
-              <li><a href="#">Instructors</a></li>
-            </ul>
-          </div> -->
-
-          <div class="footer-contact">
-            <h3>Contact Us</h3>
-            <!-- <p>
-              <i class="fas fa-map-marker-alt"></i> 123 Tech Avenue, Accra,
-              Ghana
-            </p> -->
-            <!-- <p><i class="fas fa-phone-alt"></i> +233 123 456 789</p> -->
-            <p><i class="fas fa-envelope"></i> info@risehub.site</p>
-            <p><i class="fas fa-clock"></i> Mon-Fri: 10AM - 7PM</p>
-          </div>
-        </div>
-
-        <div class="footer-bottom">
-          <p>
-            © 2025 Rise Hub. All Rights Reserved. 
-            <!-- <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a> -->
-          </p>
-        </div>
-      </div>
-    </footer>
-<script src="{% static 'scripts.js' %}"></script>
 </html>

@@ -1,0 +1,146 @@
+{% extends "info_site/base.html" %}
+{% load static %}
+
+{% block content %}
+<section class="container" style="padding: 60px 0;">
+    <div style="max-width: 600px; margin: 0 auto; background: white; padding: 40px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+        <div style="text-align: center; margin-bottom: 30px;">
+            <h2 style="color: var(--dark); margin-bottom: 10px;">Create Your Student Account</h2>
+            <p style="color: var(--text-light);">Join Rise Hub and start your digital learning journey</p>
+        </div>
+        
+        {% if messages %}
+        <div style="margin-bottom: 20px;">
+            {% for message in messages %}
+            <div style="padding: 15px; background-color: {% if message.tags == 'success' %}#d4edda{% elif message.tags == 'error' %}#f8d7da{% else %}#fff3cd{% endif %}; border: 1px solid {% if message.tags == 'success' %}#c3e6cb{% elif message.tags == 'error' %}#f5c6cb{% else %}#ffeaa7{% endif %}; border-radius: 5px; color: {% if message.tags == 'success' %}#155724{% elif message.tags == 'error' %}#721c24{% else %}#856404{% endif %};">
+                {{ message }}
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if form.non_field_errors %}
+        <div style="padding: 15px; background-color: #f8d7da; border: 1px solid #f5c6cb; border-radius: 5px; color: #721c24; margin-bottom: 20px;">
+            {{ form.non_field_errors }}
+        </div>
+        {% endif %}
+        
+        <form method="post">
+            {% csrf_token %}
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px;">
+                <div>
+                    <label style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text);">
+                        First Name *
+                    </label>
+                    {{ form.first_name }}
+                    {% if form.first_name.errors %}
+                    <div style="color: var(--danger); font-size: 0.9rem; margin-top: 5px;">
+                        {{ form.first_name.errors }}
+                    </div>
+                    {% endif %}
+                </div>
+                
+                <div>
+                    <label style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text);">
+                        Last Name *
+                    </label>
+                    {{ form.last_name }}
+                    {% if form.last_name.errors %}
+                    <div style="color: var(--danger); font-size: 0.9rem; margin-top: 5px;">
+                        {{ form.last_name.errors }}
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+            
+            <div style="margin-bottom: 20px;">
+                <label style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text);">
+                    Username *
+                </label>
+                {{ form.username }}
+                <small style="color: var(--text-light); font-size: 0.85rem;">
+                    Letters, digits and @/./+/-/_ only.
+                </small>
+                {% if form.username.errors %}
+                <div style="color: var(--danger); font-size: 0.9rem; margin-top: 5px;">
+                    {{ form.username.errors }}
+                </div>
+                {% endif %}
+            </div>
+            
+            <div style="margin-bottom: 20px;">
+                <label style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text);">
+                    Email Address *
+                </label>
+                {{ form.email }}
+                {% if form.email.errors %}
+                <div style="color: var(--danger); font-size: 0.9rem; margin-top: 5px;">
+                    {{ form.email.errors }}
+                </div>
+                {% endif %}
+            </div>
+            
+            <div style="margin-bottom: 20px;">
+                <label style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text);">
+                    Phone Number *
+                </label>
+                {{ form.phone_number }}
+                <small style="color: var(--text-light); font-size: 0.85rem;">
+                    Format: +233 XXX XXX XXX
+                </small>
+                {% if form.phone_number.errors %}
+                <div style="color: var(--danger); font-size: 0.9rem; margin-top: 5px;">
+                    {{ form.phone_number.errors }}
+                </div>
+                {% endif %}
+            </div>
+            
+            <div style="margin-bottom: 20px;">
+                <label style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text);">
+                    Password *
+                </label>
+                {{ form.password1 }}
+                <small style="color: var(--text-light); font-size: 0.85rem; display: block; margin-top: 5px;">
+                    Your password must contain at least 8 characters and can't be entirely numeric.
+                </small>
+                {% if form.password1.errors %}
+                <div style="color: var(--danger); font-size: 0.9rem; margin-top: 5px;">
+                    {{ form.password1.errors }}
+                </div>
+                {% endif %}
+            </div>
+            
+            <div style="margin-bottom: 30px;">
+                <label style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text);">
+                    Confirm Password *
+                </label>
+                {{ form.password2 }}
+                {% if form.password2.errors %}
+                <div style="color: var(--danger); font-size: 0.9rem; margin-top: 5px;">
+                    {{ form.password2.errors }}
+                </div>
+                {% endif %}
+            </div>
+            
+            <button type="submit" class="btn btn-primary" style="width: 100%; padding: 15px; font-size: 1.1rem;">
+                <i class="fas fa-user-plus"></i> Create Account
+            </button>
+        </form>
+        
+        <div style="margin-top: 30px; text-align: center; padding-top: 20px; border-top: 1px solid var(--gray);">
+            <p style="color: var(--text-light);">
+                Already have an account? 
+                <a href="{% url 'login' %}" style="color: var(--primary); font-weight: 600; text-decoration: none;">Login here</a>
+            </p>
+        </div>
+        
+        <div style="margin-top: 20px; padding: 15px; background-color: var(--light); border-radius: 5px;">
+            <p style="color: var(--text-light); font-size: 0.9rem; margin: 0; text-align: center;">
+                <i class="fas fa-info-circle" style="color: var(--primary);"></i>
+                After registration, you'll be able to complete your profile and enroll in courses.
+            </p>
+        </div>
+    </div>
+</section>
+{% endblock content %}
