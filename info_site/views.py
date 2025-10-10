@@ -1,4 +1,3 @@
-from datetime import datetime, timezone
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -24,9 +23,10 @@ def home(request):
     ).order_by('start_date')[:3]
     
     # Get upcoming webinars
+    from django.utils import timezone
     upcoming_webinars = Webinar.objects.filter(
         is_active=True,
-        date__gte=datetime.now() 
+        date__gte=timezone.now()
     ).order_by('date')[:2]
     
     context = {
@@ -35,6 +35,11 @@ def home(request):
         'webinars': upcoming_webinars,
     }
     return render(request, 'info_site/home.html', context)
+
+
+def about_view(request):
+    """About us page"""
+    return render(request, 'info_site/about.html', {'page_title': 'About Us'})
 
 
 def interest_form_view(request):
@@ -192,7 +197,7 @@ def webinar_list_view(request):
     
     upcoming_webinars = Webinar.objects.filter(
         is_active=True,
-        date__gte=datetime.now()
+        date__gte=timezone.now()
     ).order_by('date')
     
     context = {

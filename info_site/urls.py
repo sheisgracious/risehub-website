@@ -6,6 +6,7 @@ from . import views
 urlpatterns = [
     # Public pages
     path('', views.home, name='home'),
+    path('about/', views.about_view, name='about'), 
     path('interest/', views.interest_form_view, name='interest_form'),
     path('contact/', views.contact_view, name='contact'),
     path('course/<int:course_id>/', views.course_detail_view, name='course_detail'),
@@ -17,7 +18,7 @@ urlpatterns = [
     # Authentication
     path('register/', views.student_registration_view, name='student_register'),
     path('login/', auth_views.LoginView.as_view(template_name='info_site/login.html'), name='login'),
-    path('logout/', auth_views.LogoutView.as_view(next_page='home'), name='logout'),
+    path('logout/', auth_views.LogoutView.as_view(next_page='/'), name='logout'),
     
     # Student portal
     path('dashboard/', views.student_dashboard_view, name='student_dashboard'),
