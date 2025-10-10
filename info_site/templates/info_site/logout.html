@@ -1,0 +1,40 @@
+{% extends "info_site/base.html" %}
+{% load static %}
+
+{% block content %}
+<section class="container" style="padding: 100px 0;">
+    <div style="max-width: 600px; margin: 0 auto; background: white; padding: 60px 40px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); text-align: center;">
+        
+        <!-- Success Icon -->
+        <div style="font-size: 5rem; color: var(--success); margin-bottom: 25px;">
+            <i class="fas fa-check-circle"></i>
+        </div>
+        
+        <h2 style="color: var(--dark); margin-bottom: 15px;">You've Been Logged Out</h2>
+        
+        <p style="color: var(--text-light); font-size: 1.1rem; margin-bottom: 35px;">
+            Thank you for using Rise Hub. We hope to see you again soon!
+        </p>
+        
+        <!-- Action Buttons -->
+        <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+            <a href="{% url 'home' %}" class="btn btn-primary" style="text-decoration: none;">
+                <i class="fas fa-home"></i> Go to Homepage
+            </a>
+            <a href="{% url 'login' %}" class="btn btn-outline" style="text-decoration: none;">
+                <i class="fas fa-sign-in-alt"></i> Login Again
+            </a>
+        </div>
+        
+        <!-- Additional Info -->
+        <div style="margin-top: 40px; padding-top: 30px; border-top: 1px solid var(--gray);">
+            <p style="color: var(--text-light); margin-bottom: 15px;">
+                Want to learn more about our courses?
+            </p>
+            <a href="{% url 'interest_form' %}" style="color: var(--primary); text-decoration: none; font-weight: 600;">
+                <i class="fas fa-clipboard-list"></i> Express Your Interest
+            </a>
+        </div>
+    </div>
+</section>
+{% endblock content %}

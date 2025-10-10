@@ -16,7 +16,10 @@
     <header>
       <div class="container header-container">
         <div class="logo">
-          <a href="{% url 'home' %}" style="text-decoration: none; display: flex; align-items: center;">
+          <a
+            href="{% url 'home' %}"
+            style="text-decoration: none; display: flex; align-items: center"
+          >
             <img src="{% static 'Rise_Hub_Logo.png' %}" alt="Rise Hub Logo" />
           </a>
         </div>
@@ -28,32 +31,62 @@
         <nav>
           <ul>
             <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'about' %}">About</a></li>
             <li><a href="{% url 'home' %}#course">Course</a></li>
             <li><a href="{% url 'home' %}#syllabus">Syllabus</a></li>
             <li><a href="{% url 'contact' %}">Contact</a></li>
             {% if user.is_authenticated %}
-              <li><a href="{% url 'student_dashboard' %}">Dashboard</a></li>
+            <li><a href="{% url 'student_dashboard' %}">Dashboard</a></li>
             {% endif %}
           </ul>
         </nav>
 
         <div class="auth-buttons">
           {% if user.is_authenticated %}
-            <span style="color: var(--text); margin-right: 15px; display: flex; align-items: center;">
-              <i class="fas fa-user-circle" style="margin-right: 5px;"></i>
-              {{ user.first_name|default:user.username }}
-            </span>
-            <a href="{% url 'logout' %}" class="btn btn-outline" style="text-decoration: none;">Logout</a>
+          <span
+            style="
+              color: var(--text);
+              margin-right: 15px;
+              display: flex;
+              align-items: center;
+            "
+          >
+            <i class="fas fa-user-circle" style="margin-right: 5px"></i>
+            {{ user.first_name|default:user.username }}
+          </span>
+          <form
+            method="post"
+            action="{% url 'logout' %}"
+            style="display: inline"
+          >
+            {% csrf_token %}
+            <button
+              type="submit"
+              class="btn btn-outline"
+              style="border: none; cursor: pointer"
+            >
+              Logout
+            </button>
+          </form>
           {% else %}
-            <a href="{% url 'login' %}" class="btn btn-outline" style="text-decoration: none;">Login</a>
-            <a href="{% url 'student_register' %}" class="btn btn-primary" style="text-decoration: none;">Sign Up</a>
+          <a
+            href="{% url 'login' %}"
+            class="btn btn-outline"
+            style="text-decoration: none"
+            >Login</a
+          >
+          <a
+            href="{% url 'student_register' %}"
+            class="btn btn-primary"
+            style="text-decoration: none"
+            >Sign Up</a
+          >
           {% endif %}
         </div>
       </div>
     </header>
 
-    {% block content %}
-    {% endblock content %}
+    {% block content %} {% endblock content %}
 
     <script src="{% static 'script.js' %}"></script>
   </body>
