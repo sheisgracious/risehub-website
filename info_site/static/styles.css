@@ -185,7 +185,7 @@ nav ul li a:hover {
 .course-image {
   flex: 1;
   min-height: 400px;
-  background-color: var(--gray);
+  background-color: white;
   display: flex;
   align-items: center;
   justify-content: center;

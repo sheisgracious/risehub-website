@@ -1,16 +1,15 @@
-{% extends "info_site/base.html" %}
-{% load static %}
-
-{% block content %}
+{% extends "info_site/base.html" %} {% load static %} {% block content %}
 
 <!-- Messages Display -->
 {% if messages %}
-<div class="container" style="padding-top: 20px;">
-    {% for message in messages %}
-    <div style="padding: 15px; margin-bottom: 15px; background-color: {% if message.tags == 'success' %}#d4edda{% elif message.tags == 'error' %}#f8d7da{% else %}#fff3cd{% endif %}; border: 1px solid {% if message.tags == 'success' %}#c3e6cb{% elif message.tags == 'error' %}#f5c6cb{% else %}#ffeaa7{% endif %}; border-radius: 5px; color: {% if message.tags == 'success' %}#155724{% elif message.tags == 'error' %}#721c24{% else %}#856404{% endif %};">
-        {{ message }}
-    </div>
-    {% endfor %}
+<div class="container" style="padding-top: 20px">
+  {% for message in messages %}
+  <div
+    style="padding: 15px; margin-bottom: 15px; background-color: {% if message.tags == 'success' %}#d4edda{% elif message.tags == 'error' %}#f8d7da{% else %}#fff3cd{% endif %}; border: 1px solid {% if message.tags == 'success' %}#c3e6cb{% elif message.tags == 'error' %}#f5c6cb{% else %}#ffeaa7{% endif %}; border-radius: 5px; color: {% if message.tags == 'success' %}#155724{% elif message.tags == 'error' %}#721c24{% else %}#856404{% endif %};"
+  >
+    {{ message }}
+  </div>
+  {% endfor %}
 </div>
 {% endif %}
 
@@ -19,15 +18,25 @@
   <div class="container">
     <h2>Digital Literacy for Seniors in Ghana</h2>
     <p>
-      Our 6-week Digital Literacy 101 course is designed specifically to
-      help elderly individuals gain confidence with technology in a
-      supportive, patient learning environment.
+      Our 6-week Digital Literacy 101 course is designed specifically to help
+      elderly individuals gain confidence with technology in a supportive,
+      patient learning environment.
     </p>
     <div class="hero-buttons">
       {% if webinars %}
-        <a href="{% url 'webinar_list' %}" class="btn btn-outline" style="text-decoration: none; display: inline-block;">Join Free Webinar</a>
+      <a
+        href="{% url 'webinar_list' %}"
+        class="btn btn-outline"
+        style="text-decoration: none; display: inline-block"
+        >Join Free Webinar</a
+      >
       {% else %}
-        <a href="{% url 'contact' %}" class="btn btn-accent" style="text-decoration: none; display: inline-block;">Ask a Question</a>
+      <a
+        href="{% url 'contact' %}"
+        class="btn btn-accent"
+        style="text-decoration: none; display: inline-block"
+        >Ask a Question</a
+      >
       {% endif %}
     </div>
   </div>
@@ -37,14 +46,15 @@
 <section class="container" id="course">
   <div class="course-highlight">
     <div class="course-image">
-      <span>Digital Literacy 101</span>
+      <img src="{% static 'RiseHub Digital Lit 101.jpeg' %}" style="width: 100%;
+      height: 100%; object-fit: cover;" />
     </div>
     <div class="course-details">
       <h2>Digital Literacy 101</h2>
       <p>
         This comprehensive 6-week course covers everything from basic device
-        operation to internet safety and even an introduction to AI
-        technology. Perfect for absolute beginners.
+        operation to internet safety and even an introduction to AI technology.
+        Perfect for absolute beginners.
       </p>
 
       <div class="course-meta">
@@ -67,144 +77,79 @@
       <p>What's included:</p>
       <ul style="list-style-type: none; margin: 15px 0">
         <li>
-          <i class="fas fa-check" style="color: var(--success); margin-right: 10px"></i>
+          <i
+            class="fas fa-check"
+            style="color: var(--success); margin-right: 10px"
+          ></i>
           6 weeks of interactive live sessions
         </li>
         <li>
-          <i class="fas fa-check" style="color: var(--success); margin-right: 10px"></i>
+          <i
+            class="fas fa-check"
+            style="color: var(--success); margin-right: 10px"
+          ></i>
           Weekly flashcard assignments
         </li>
         <li>
-          <i class="fas fa-check" style="color: var(--success); margin-right: 10px"></i>
+          <i
+            class="fas fa-check"
+            style="color: var(--success); margin-right: 10px"
+          ></i>
           One-on-one support from instructors
         </li>
         <li>
-          <i class="fas fa-check" style="color: var(--success); margin-right: 10px"></i>
+          <i
+            class="fas fa-check"
+            style="color: var(--success); margin-right: 10px"
+          ></i>
           Course completion certificate
         </li>
       </ul>
 
       {% if cohorts %}
-        <p style="margin-top: 20px; padding: 15px; background-color: var(--light); border-radius: 5px;">
-          <strong>Next cohort starts:</strong> {{ cohorts.0.start_date|date:"F d, Y" }}
-          <br>
-          <small style="color: var(--text-light);">{{ cohorts.0.spots_remaining }} spots remaining</small>
-        </p>
+      <p
+        style="
+          margin-top: 20px;
+          padding: 15px;
+          background-color: var(--light);
+          border-radius: 5px;
+        "
+      >
+        <strong>Next cohort starts:</strong> {{ cohorts.0.start_date|date:"F d,
+        Y" }}
+        <br />
+        <small style="color: var(--text-light)"
+          >{{ cohorts.0.spots_remaining }} spots remaining</small
+        >
+      </p>
       {% endif %}
 
-      {% comment %} <div class="enroll-btn">
-        <a href="{% url 'interest_form' %}" class="btn btn-primary" style="text-decoration: none; display: inline-block;">Enroll Now</a>
-      </div> {% endcomment %}
+      <div
+        class="enroll-btn"
+        style="display: flex; gap: 15px; margin-top: 20px; flex-wrap: wrap"
+      >
+        <a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSe2Qt-OMgUfD6CDNiwRO4lyoBH-s2yzypGVsirvpa96cH-BzQ/viewform?usp=header"
+          class="btn btn-primary"
+          style="text-decoration: none; display: inline-block"
+        >
+          Apply Now!
+        </a>
+        {% if courses %}
+        <a
+          href="{% url 'course_syllabus' courses.0.id %}"
+          class="btn btn-outline"
+          style="text-decoration: none; display: inline-block"
+        >
+          <i class="fas fa-book"></i> View Full Syllabus
+        </a>
+        {% endif %}
+      </div>
     </div>
   </div>
 </section>
 
 <!-- Syllabus Section -->
-<section class="container" id="syllabus">
-  <div class="syllabus">
-    <h2>Course Syllabus</h2>
-
-    <div class="week-card">
-      <h3>Week 1: Getting Started with Technology</h3>
-      <ul class="topics-list">
-        <li>Introduction to digital technology</li>
-        <li>Understanding computers: hardware vs. software</li>
-        <li>Types of OS (e.g., Windows, macOS, Linux)</li>
-        <li>Factors to consider when selecting an OS for your device</li>
-      </ul>
-    </div>
-
-    <div class="week-card">
-      <h3>Week 2: Navigating the Smartphone</h3>
-      <ul class="topics-list">
-        <li>Navigating computers or laptops</li>
-        <li>Navigating mobile devices</li>
-        <li>Setting up Wi-Fi and mobile data</li>
-        <li>Introduction to the Settings app and basic customization</li>
-        <li>Buying a digital device</li>
-        <li>Specifications to consider (e.g., processor, RAM, storage)</li>
-      </ul>
-    </div>
-
-    <div class="week-card">
-      <h3>Week 3: Health, Safety & Troubleshooting</h3>
-      <ul class="topics-list">
-        <li>Health and safety while working with digital devices</li>
-        <li>Fixing problems with computers and mobile devices</li>
-        <li>Understanding device error messages and seeking support</li>
-      </ul>
-    </div>
-
-    <div class="week-card">
-      <h3>Week 4: Internet Basics & Social Media for Beginners</h3>
-      <ul class="topics-list">
-        <li>Introduction to the Internet and the World Wide Web</li>
-        <li>Downloading and saving files</li>
-        <li>Safe browsing on the Internet</li>
-        <li>Understanding online safety</li>
-        <li>Creating accounts on social media platforms</li>
-      </ul>
-    </div>
-
-    <div class="week-card">
-      <h3>Week 5: Accessibility and Safe Usage</h3>
-      <ul class="topics-list">
-        <li>Using accessibility features</li>
-        <li>Cybersecurity basics: Staying safe online</li>
-        <li>Strategies for dealing with cyberbullying</li>
-        <li>How to recognize scams, fraudulent emails, and security risks</li>
-      </ul>
-    </div>
-
-    <div class="week-card">
-      <h3>Week 6: Getting Your Business Online / Understanding AI Technology</h3>
-      <ul class="topics-list">
-        <li>First steps to get your business online</li>
-        <li>Creating an account and setting up secure passwords</li>
-        <li>Introduction to AI and Generative AI</li>
-        <li>Being cautious about misinformation or deep fakes</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<!-- Features Section -->
-<section class="container">
-  <div class="features">
-    <div class="feature-card">
-      <div class="feature-icon">
-        <i class="fas fa-hands-helping"></i>
-      </div>
-      <h3>Hands-On Learning</h3>
-      <p>
-        Our practical approach ensures you're not just learning theory but
-        actually using technology in every class.
-      </p>
-    </div>
-
-    <div class="feature-card">
-      <div class="feature-icon">
-        <i class="fas fa-users"></i>
-      </div>
-      <h3>Supportive Community</h3>
-      <p>
-        Learn alongside peers at similar skill levels with dedicated
-        teaching assistants for personalized help.
-      </p>
-    </div>
-
-    <div class="feature-card">
-      <div class="feature-icon">
-        <i class="fas fa-graduation-cap"></i>
-      </div>
-      <h3>Flashcard System</h3>
-      <p>
-        Reinforce learning with our weekly flashcard assignments on
-        platforms like Quizlet to practice between classes.
-      </p>
-    </div>
-  </div>
-</section>
 
 <!-- Webinar Section (if webinars exist) -->
 {% if webinars %}
@@ -212,23 +157,32 @@
   <div class="webinar">
     <h2>Free Introductory Webinar</h2>
     <p>
-      <strong>"Getting Comfortable with Technology: A Beginner's Guide for Seniors"</strong>
+      <strong
+        >"Getting Comfortable with Technology: A Beginner's Guide for
+        Seniors"</strong
+      >
     </p>
     <p>
-      Join our free webinar to experience our teaching style and get a taste
-      of what our full course offers.
+      Join our free webinar to experience our teaching style and get a taste of
+      what our full course offers.
     </p>
 
     {% for webinar in webinars %}
-      <p style="margin: 20px 0;">
-        <strong>Next webinar:</strong> {{ webinar.date|date:"F d, Y" }} at {{ webinar.date|time:"h:i A" }}
-        <br>
-        <small>{{ webinar.spots_remaining }} spots remaining</small>
-      </p>
+    <p style="margin: 20px 0">
+      <strong>Next webinar:</strong> {{ webinar.date|date:"F d, Y" }} at {{
+      webinar.date|time:"h:i A" }}
+      <br />
+      <small>{{ webinar.spots_remaining }} spots remaining</small>
+    </p>
     {% endfor %}
 
     <div style="margin: 30px 0">
-      <a href="{% url 'webinar_list' %}" class="btn btn-accent" style="text-decoration: none; display: inline-block;">Register for Free Webinar</a>
+      <a
+        href="{% url 'webinar_list' %}"
+        class="btn btn-accent"
+        style="text-decoration: none; display: inline-block"
+        >Register for Free Webinar</a
+      >
     </div>
 
     <p>
@@ -244,11 +198,24 @@
   <div class="cta">
     <h2>Ready to Start Your Digital Journey?</h2>
     <p>
-      Join our next cohort of Digital Literacy 101 and gain the skills you
-      need to navigate today's digital world with confidence.
+      Join our next cohort of Digital Literacy 101 and gain the skills you need
+      to navigate today's digital world with confidence.
     </p>
-    <div style="display: flex; justify-content: center; gap: 20px; margin-top: 30px; flex-wrap: wrap;">
-      <a href="{% url 'contact' %}" class="btn btn-outline" style="text-decoration: none; display: inline-block;">Ask A Question</a>
+    <div
+      style="
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin-top: 30px;
+        flex-wrap: wrap;
+      "
+    >
+      <a
+        href="https://docs.google.com/forms/d/e/1FAIpQLSe2Qt-OMgUfD6CDNiwRO4lyoBH-s2yzypGVsirvpa96cH-BzQ/viewform?usp=header"
+        class="btn btn-outline"
+        style="text-decoration: none; display: inline-block"
+        >Apply Now</a
+      >
     </div>
   </div>
 </section>

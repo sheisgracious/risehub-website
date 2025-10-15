@@ -1,0 +1,683 @@
+{% extends "info_site/base.html" %} {% load static %} {% block content %}
+
+<!-- Hero Section -->
+<section class="hero">
+  <div class="container">
+    <h2>Join Our Team at Rise Hub</h2>
+    <p>
+      Gain teaching experience, build your resume, and make a real impact in
+      your community. Help seniors master technology with patience and passion.
+    </p>
+    <a
+      href="{% url 'contact' %}"
+      class="btn btn-accent"
+      style="text-decoration: none; display: inline-block"
+      >Ask a Question</a
+    >
+  </div>
+</section>
+
+<!-- Why Join Section -->
+<section class="container" style="padding: 60px 0">
+  <h2
+    style="
+      text-align: center;
+      color: var(--dark);
+      margin-bottom: 50px;
+      font-size: 2.2rem;
+    "
+  >
+    Why Teach With Rise Hub?
+  </h2>
+
+  <div
+    style="
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      margin-bottom: 60px;
+    "
+  >
+    <!-- Card 1 -->
+    <div
+      style="
+        background: white;
+        padding: 35px;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        text-align: center;
+      "
+    >
+      <div style="font-size: 3rem; color: var(--primary); margin-bottom: 20px">
+        <i class="fas fa-briefcase"></i>
+      </div>
+      <h3 style="color: var(--dark); margin-bottom: 15px; font-size: 1.3rem">
+        Teaching Experience
+      </h3>
+      <p style="color: var(--text-light); line-height: 1.8">
+        Build your resume with real instructional experience. Perfect for
+        education, psychology, or tech careers.
+      </p>
+    </div>
+
+    <!-- Card 2 -->
+    <div
+      style="
+        background: white;
+        padding: 35px;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        text-align: center;
+      "
+    >
+      <div style="font-size: 3rem; color: var(--primary); margin-bottom: 20px">
+        <i class="fas fa-coins"></i>
+      </div>
+      <h3 style="color: var(--dark); margin-bottom: 15px; font-size: 1.3rem">
+        Competitive Pay
+      </h3>
+      <p style="color: var(--text-light); line-height: 1.8">
+        Earn GHS 150-250/month depending on role. Performance bonuses available
+        as you grow with us.
+      </p>
+    </div>
+
+    <!-- Card 3 -->
+    <div
+      style="
+        background: white;
+        padding: 35px;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        text-align: center;
+      "
+    >
+      <div style="font-size: 3rem; color: var(--primary); margin-bottom: 20px">
+        <i class="fas fa-clock"></i>
+      </div>
+      <h3 style="color: var(--dark); margin-bottom: 15px; font-size: 1.3rem">
+        Flexible Schedule
+      </h3>
+      <p style="color: var(--text-light); line-height: 1.8">
+        Part-time positions that fit around your university schedule. Choose the
+        hours that work for you.
+      </p>
+    </div>
+
+    <!-- Card 4 -->
+    <div
+      style="
+        background: white;
+        padding: 35px;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        text-align: center;
+      "
+    >
+      <div style="font-size: 3rem; color: var(--primary); margin-bottom: 20px">
+        <i class="fas fa-graduation-cap"></i>
+      </div>
+      <h3 style="color: var(--dark); margin-bottom: 15px; font-size: 1.3rem">
+        Professional Growth
+      </h3>
+      <p style="color: var(--text-light); line-height: 1.8">
+        Training in adult education, curriculum design, and community impact.
+        Develop leadership skills.
+      </p>
+    </div>
+
+    <!-- Card 5 -->
+    <div
+      style="
+        background: white;
+        padding: 35px;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        text-align: center;
+      "
+    >
+      <div style="font-size: 3rem; color: var(--primary); margin-bottom: 20px">
+        <i class="fas fa-heart"></i>
+      </div>
+      <h3 style="color: var(--dark); margin-bottom: 15px; font-size: 1.3rem">
+        Real Impact
+      </h3>
+      <p style="color: var(--text-light); line-height: 1.8">
+        Make a genuine difference in seniors' lives. Watch them gain confidence
+        and connect with family.
+      </p>
+    </div>
+
+    <!-- Card 6 -->
+    <div
+      style="
+        background: white;
+        padding: 35px;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        text-align: center;
+      "
+    >
+      <div style="font-size: 3rem; color: var(--primary); margin-bottom: 20px">
+        <i class="fas fa-users"></i>
+      </div>
+      <h3 style="color: var(--dark); margin-bottom: 15px; font-size: 1.3rem">
+        Great Team
+      </h3>
+      <p style="color: var(--text-light); line-height: 1.8">
+        Join passionate student educators committed to bridging the digital
+        divide in Ghana.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Open Positions Section -->
+<section
+  class="container"
+  style="padding: 60px 0; background-color: var(--light); border-radius: 10px"
+>
+  <h2
+    style="
+      text-align: center;
+      color: var(--dark);
+      margin-bottom: 50px;
+      font-size: 2.2rem;
+    "
+  >
+    Open Positions
+  </h2>
+
+  <div style="display: grid; gap: 30px; max-width: 1000px; margin: 0 auto">
+    <!-- Lead Instructor -->
+    <div
+      style="
+        background: white;
+        padding: 30px;
+        border-radius: 10px;
+        border-left: 5px solid var(--primary);
+      "
+    >
+      <div
+        style="
+          display: flex;
+          justify-content: space-between;
+          align-items: start;
+          margin-bottom: 15px;
+        "
+      >
+        <div>
+          <h3 style="color: var(--dark); margin: 0 0 5px 0; font-size: 1.3rem">
+            Lead Instructor
+          </h3>
+          <p style="color: var(--text-light); margin: 0">Remote | Part-Time</p>
+        </div>
+        <div style="text-align: right">
+          <div
+            style="font-size: 1.4rem; font-weight: 700; color: var(--primary)"
+          >
+            GHS 200-250/month
+          </div>
+          <div style="color: var(--text-light); font-size: 0.9rem">
+            Based on experience
+          </div>
+        </div>
+      </div>
+
+      <p style="color: var(--text); margin-bottom: 15px; line-height: 1.8">
+        Be the primary instructor for our 6-week Digital Literacy course. Lead
+        lessons, manage student engagement, and ensure course objectives are
+        met.
+      </p>
+
+      <div style="margin-bottom: 15px">
+        <strong style="color: var(--dark)">Responsibilities:</strong>
+        <ul style="margin: 8px 0 0 20px; color: var(--text)">
+          <li>Teach 2-hour weekly live classes on Zoom</li>
+          <li>Manage student questions and progress</li>
+          <li>Grade weekly flashcard assignments</li>
+          <li>Provide one-on-one support as needed</li>
+          <li>Gather student feedback for course improvement</li>
+        </ul>
+      </div>
+
+      <div style="margin-bottom: 15px">
+        <strong style="color: var(--dark)">Requirements:</strong>
+        <ul style="margin: 8px 0 0 20px; color: var(--text)">
+          <li>STEM or education background preferred</li>
+          <li>Patient, clear communication skills</li>
+          <li>Experience teaching or tutoring (academic or otherwise)</li>
+          <li>Comfortable using Zoom and basic tech tools</li>
+          <li>Flexible schedule (minimum 6 hours/week)</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Supporting Facilitator -->
+    <div
+      style="
+        background: white;
+        padding: 30px;
+        border-radius: 10px;
+        border-left: 5px solid var(--accent);
+      "
+    >
+      <div
+        style="
+          display: flex;
+          justify-content: space-between;
+          align-items: start;
+          margin-bottom: 15px;
+        "
+      >
+        <div>
+          <h3 style="color: var(--dark); margin: 0 0 5px 0; font-size: 1.3rem">
+            Supporting Facilitator
+          </h3>
+          <p style="color: var(--text-light); margin: 0">Remote | Part-Time</p>
+        </div>
+        <div style="text-align: right">
+          <div
+            style="font-size: 1.4rem; font-weight: 700; color: var(--accent)"
+          >
+            GHS 150-180/month
+          </div>
+          <div style="color: var(--text-light); font-size: 0.9rem">
+            Flexible
+          </div>
+        </div>
+      </div>
+
+      <p style="color: var(--text); margin-bottom: 15px; line-height: 1.8">
+        Assist the Lead Instructor by providing one-on-one support to students.
+        Manage breakout rooms, troubleshoot technical issues, and help with
+        assignments.
+      </p>
+
+      <div style="margin-bottom: 15px">
+        <strong style="color: var(--dark)">Responsibilities:</strong>
+        <ul style="margin: 8px 0 0 20px; color: var(--text)">
+          <li>Attend all weekly classes and assist</li>
+          <li>Manage breakout rooms for smaller groups</li>
+          <li>Help troubleshoot technology problems</li>
+          <li>Grade and provide feedback on assignments</li>
+          <li>Answer student questions via email/WhatsApp</li>
+        </ul>
+      </div>
+
+      <div style="margin-bottom: 15px">
+        <strong style="color: var(--dark)">Requirements:</strong>
+        <ul style="margin: 8px 0 0 20px; color: var(--text)">
+          <li>Basic tech skills and comfort with online tools</li>
+          <li>Patient and empathetic with beginners</li>
+          <li>Reliable and detail-oriented</li>
+          <li>4-6 hours/week availability</li>
+          <li>No prior teaching experience necessary!</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Social Media & Graphics -->
+    <div
+      style="
+        background: white;
+        padding: 30px;
+        border-radius: 10px;
+        border-left: 5px solid var(--secondary);
+      "
+    >
+      <div
+        style="
+          display: flex;
+          justify-content: space-between;
+          align-items: start;
+          margin-bottom: 15px;
+        "
+      >
+        <div>
+          <h3 style="color: var(--dark); margin: 0 0 5px 0; font-size: 1.3rem">
+            Social Media & Graphics Manager
+          </h3>
+          <p style="color: var(--text-light); margin: 0">Remote | Part-Time</p>
+        </div>
+        <div style="text-align: right">
+          <div
+            style="font-size: 1.4rem; font-weight: 700; color: var(--secondary)"
+          >
+            GHS 150-200/month
+          </div>
+          <div style="color: var(--text-light); font-size: 0.9rem">
+            Flexible
+          </div>
+        </div>
+      </div>
+
+      <p style="color: var(--text); margin-bottom: 15px; line-height: 1.8">
+        Help us build Rise Hub's online presence. Create graphics, manage social
+        media, and help with community outreach marketing.
+      </p>
+
+      <div style="margin-bottom: 15px">
+        <strong style="color: var(--dark)">Responsibilities:</strong>
+        <ul style="margin: 8px 0 0 20px; color: var(--text)">
+          <li>Create graphics for social media (Canva)</li>
+          <li>Post to Facebook, Instagram, TikTok</li>
+          <li>Design course flyers and promotional materials</li>
+          <li>Manage community outreach</li>
+          <li>Track engagement and optimize content</li>
+        </ul>
+      </div>
+
+      <div style="margin-bottom: 15px">
+        <strong style="color: var(--dark)">Requirements:</strong>
+        <ul style="margin: 8px 0 0 20px; color: var(--text)">
+          <li>Social media experience or passion</li>
+          <li>Basic design skills (Canva or similar)</li>
+          <li>Understanding of social media trends</li>
+          <li>5-8 hours/week available</li>
+          <li>Creative and detail-oriented</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Application Section -->
+<section class="container" style="padding: 60px 0">
+  <div
+    style="
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      padding: 60px 40px;
+      border-radius: 10px;
+      text-align: center;
+    "
+  >
+    <h2 style="margin-bottom: 15px; font-size: 2rem">
+      Ready to Make an Impact?
+    </h2>
+    <p style="opacity: 0.9; font-size: 1.1rem; margin-bottom: 30px">
+      Apply now to join our team and help bridge the digital divide in Ghana
+    </p>
+
+    <a
+      href="https://forms.gle/9yjtRQMcu8hX9sUM6"
+      target="_blank"
+      class="btn btn-accent"
+      style="
+        display: inline-block;
+        text-decoration: none;
+        padding: 18px 40px;
+        font-size: 1.2rem;
+      "
+    >
+      <i class="fas fa-paper-plane"></i> Apply Now
+    </a>
+
+    <p style="opacity: 0.8; margin-top: 20px; font-size: 0.95rem">
+      Application takes about 10 minutes. We review applications weekly.
+    </p>
+  </div>
+
+  <!-- What to Expect -->
+  <div style="margin-top: 50px">
+    <h3
+      style="
+        text-align: center;
+        color: var(--dark);
+        margin-bottom: 40px;
+        font-size: 1.8rem;
+      "
+    >
+      Our Hiring Process
+    </h3>
+
+    <div
+      style="
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 25px;
+      "
+    >
+      <div style="text-align: center">
+        <div
+          style="display: flex; justify-content: center; margin-bottom: 15px"
+        >
+          <div
+            style="
+              width: 50px;
+              height: 50px;
+              background: var(--primary);
+              color: white;
+              border-radius: 50%;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              font-weight: 700;
+              font-size: 1.3rem;
+            "
+          >
+            1
+          </div>
+        </div>
+        <h4 style="color: var(--dark); margin-bottom: 10px">
+          Submit Application
+        </h4>
+        <p style="color: var(--text-light); font-size: 0.95rem">
+          Fill out the Google Form with your information and experience
+        </p>
+      </div>
+
+      <div style="text-align: center">
+        <div
+          style="display: flex; justify-content: center; margin-bottom: 15px"
+        >
+          <div
+            style="
+              width: 50px;
+              height: 50px;
+              background: var(--primary);
+              color: white;
+              border-radius: 50%;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              font-weight: 700;
+              font-size: 1.3rem;
+            "
+          >
+            2
+          </div>
+        </div>
+        <h4 style="color: var(--dark); margin-bottom: 10px">We Review</h4>
+        <p style="color: var(--text-light); font-size: 0.95rem">
+          Our team reviews your application (takes about 3-5 days)
+        </p>
+      </div>
+
+      <div style="text-align: center">
+        <div
+          style="display: flex; justify-content: center; margin-bottom: 15px"
+        >
+          <div
+            style="
+              width: 50px;
+              height: 50px;
+              background: var(--primary);
+              color: white;
+              border-radius: 50%;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              font-weight: 700;
+              font-size: 1.3rem;
+            "
+          >
+            3
+          </div>
+        </div>
+        <h4 style="color: var(--dark); margin-bottom: 10px">Interview Call</h4>
+        <p style="color: var(--text-light); font-size: 0.95rem">
+          20-30 minute Zoom call to discuss the role and your background
+        </p>
+      </div>
+
+      <div style="text-align: center">
+        <div
+          style="display: flex; justify-content: center; margin-bottom: 15px"
+        >
+          <div
+            style="
+              width: 50px;
+              height: 50px;
+              background: var(--primary);
+              color: white;
+              border-radius: 50%;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              font-weight: 700;
+              font-size: 1.3rem;
+            "
+          >
+            4
+          </div>
+        </div>
+        <h4 style="color: var(--dark); margin-bottom: 10px">Onboarding</h4>
+        <p style="color: var(--text-light); font-size: 0.95rem">
+          If selected, we'll train you and get you ready to teach!
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ Section -->
+<section class="container" style="padding: 60px 0">
+  <h3
+    style="
+      text-align: center;
+      color: var(--dark);
+      margin-bottom: 40px;
+      font-size: 2rem;
+    "
+  >
+    Frequently Asked Questions
+  </h3>
+
+  <div style="max-width: 800px; margin: 0 auto; display: grid; gap: 20px">
+    <div
+      style="
+        background: white;
+        padding: 25px;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      "
+    >
+      <h4 style="color: var(--primary); margin-bottom: 10px; cursor: pointer">
+        <i class="fas fa-question-circle"></i> Do I need teaching experience?
+      </h4>
+      <p style="color: var(--text); margin: 0">
+        Not necessarily! We're looking for patient, empathetic people. We'll
+        provide training on teaching methods and curriculum. Tutoring,
+        mentoring, or community service experience is a bonus but not required
+        for supporting roles.
+      </p>
+    </div>
+
+    <div
+      style="
+        background: white;
+        padding: 25px;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      "
+    >
+      <h4 style="color: var(--primary); margin-bottom: 10px; cursor: pointer">
+        <i class="fas fa-question-circle"></i> How much time commitment is
+        required?
+      </h4>
+      <p style="color: var(--text); margin: 0">
+        Lead Instructors: 6-8 hours/week (includes class time + prep + grading)
+        Supporting Facilitators: 4-6 hours/week Social Media: 5-8 hours/week All
+        positions are flexible and fit around your schedule.
+      </p>
+    </div>
+
+    <div
+      style="
+        background: white;
+        padding: 25px;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      "
+    >
+      <h4 style="color: var(--primary); margin-bottom: 10px; cursor: pointer">
+        <i class="fas fa-question-circle"></i> When does the first cohort start?
+      </h4>
+      <p style="color: var(--text); margin: 0">
+        Our first cohort is launching soon! Once we've hired our team, we'll
+        begin recruiting students. If hired, we'll provide at least 2 weeks of
+        training before classes begin.
+      </p>
+    </div>
+
+    <div
+      style="
+        background: white;
+        padding: 25px;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      "
+    >
+      <h4 style="color: var(--primary); margin-bottom: 10px; cursor: pointer">
+        <i class="fas fa-question-circle"></i> Will I get a contract?
+      </h4>
+      <p style="color: var(--text); margin: 0">
+        Yes! All hired facilitators will receive a written contract outlining
+        responsibilities, compensation, and expectations. We want a
+        professional, clear working relationship.
+      </p>
+    </div>
+
+    <div
+      style="
+        background: white;
+        padding: 25px;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      "
+    >
+      <h4 style="color: var(--primary); margin-bottom: 10px; cursor: pointer">
+        <i class="fas fa-question-circle"></i> Can I apply for multiple roles?
+      </h4>
+      <p style="color: var(--text); margin: 0">
+        Absolutely! Let us know which roles interest you most in the
+        application. Some people work in multiple capacities if schedules allow.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Final CTA -->
+<section class="container" style="padding: 40px 0; text-align: center">
+  <div
+    style="background-color: var(--light); padding: 40px; border-radius: 10px"
+  >
+    <h3 style="color: var(--dark); margin-bottom: 15px">
+      Questions Before Applying?
+    </h3>
+    <p style="color: var(--text-light); margin-bottom: 20px">
+      Feel free to reach out - we're happy to talk about the opportunity!
+    </p>
+    <a
+      href="{% url 'contact' %}"
+      class="btn btn-primary"
+      style="text-decoration: none"
+    >
+      <i class="fas fa-envelope"></i> Contact Us
+    </a>
+  </div>
+</section>
+
+{% endblock content %}

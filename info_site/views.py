@@ -209,7 +209,7 @@ def webinar_list_view(request):
     return render(request, 'info_site/webinar_list.html', context)
 
 
-def course_detail_view(request, course_id):
+def course_detail_view(request, course_id): #TODO
     """Detailed view of a course"""
     course = get_object_or_404(Course, id=course_id, is_active=True)
     curriculum = course.curriculum.all().order_by('week_number')
@@ -225,6 +225,17 @@ def course_detail_view(request, course_id):
     }
     return render(request, 'info_site/course_detail.html', context)
 
+def course_syllabus_view(request, course_id):
+    """Detailed view of course syllabus"""
+    course = get_object_or_404(Course, id=course_id, is_active=True)
+    curriculum = course.curriculum_weeks.all().order_by('week_number')
+    
+    context = {
+        'course': course,
+        'curriculum': curriculum,
+        'page_title': course.title,
+    }
+    return render(request, 'info_site/course_syllabus.html', context)
 
 # Student Portal Views
 def student_registration_view(request):
@@ -248,6 +259,15 @@ def student_registration_view(request):
     }
     return render(request, 'info_site/student_registration.html', context)
 
+# Error handling
+def page_not_found(request, exception=None):
+    return render(request, 'info_site/404.html', status=404)
+
+def server_error(request, exception=None):
+    return render(request, 'info_site/500.html', status=500)
+
+def access_forbidden(request, exception=None):
+    return render(request, 'info_site/403.html', status=403)
 
 @login_required
 def student_profile_view(request):

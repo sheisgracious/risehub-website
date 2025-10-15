@@ -1,0 +1,406 @@
+{% extends "info_site/base.html" %} {% load static %} {% block content %}
+
+<!-- Hero Section -->
+<section class="hero">
+  <div class="container">
+    <h2>{{ course.title }}</h2>
+    <p>
+      Comprehensive {{ course.duration_weeks }}-week course to master digital
+      literacy
+    </p>
+    <div style="margin-top: 20px">
+      <a
+        href="{% url 'home' %}"
+        class="btn btn-primary"
+        style="text-decoration: none; display: inline-block"
+      >
+        <i class="fas fa-arrow-left"></i> Back to Home
+      </a>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- Full Syllabus -->
+<section class="container" style = "padding: 60px 0;" id="syllabus">
+  <div class="syllabus">
+    <h2>Course Syllabus</h2>
+
+    <div class="week-card">
+      <h3>Week 1: Getting Started with Technology</h3>
+      <ul class="topics-list">
+        <li>Introduction to digital technology</li>
+        <li>Understanding computers: hardware vs. software</li>
+        <li>Types of OS (e.g., Windows, macOS, Linux)</li>
+        <li>Factors to consider when selecting an OS for your device</li>
+      </ul>
+    </div>
+
+    <div class="week-card">
+      <h3>Week 2: Navigating the Smartphone</h3>
+      <ul class="topics-list">
+        <li>Navigating computers or laptops</li>
+        <li>Navigating mobile devices</li>
+        <li>Setting up Wi-Fi and mobile data</li>
+        <li>Introduction to the Settings app and basic customization</li>
+        <li>Buying a digital device</li>
+        <li>Specifications to consider (e.g., processor, RAM, storage)</li>
+      </ul>
+    </div>
+
+    <div class="week-card">
+      <h3>Week 3: Health, Safety & Troubleshooting</h3>
+      <ul class="topics-list">
+        <li>Health and safety while working with digital devices</li>
+        <li>Fixing problems with computers and mobile devices</li>
+        <li>Understanding device error messages and seeking support</li>
+      </ul>
+    </div>
+
+    <div class="week-card">
+      <h3>Week 4: Internet Basics & Social Media for Beginners</h3>
+      <ul class="topics-list">
+        <li>Introduction to the Internet and the World Wide Web</li>
+        <li>Downloading and saving files</li>
+        <li>Safe browsing on the Internet</li>
+        <li>Understanding online safety</li>
+        <li>Creating accounts on social media platforms</li>
+      </ul>
+    </div>
+
+    <div class="week-card">
+      <h3>Week 5: Accessibility and Safe Usage</h3>
+      <ul class="topics-list">
+        <li>Using accessibility features</li>
+        <li>Cybersecurity basics: Staying safe online</li>
+        <li>Strategies for dealing with cyberbullying</li>
+        <li>How to recognize scams, fraudulent emails, and security risks</li>
+      </ul>
+    </div>
+
+    <div class="week-card">
+      <h3>
+        Week 6: Getting Your Business Online / Understanding AI Technology
+      </h3>
+      <ul class="topics-list">
+        <li>First steps to get your business online</li>
+        <li>Creating an account and setting up secure passwords</li>
+        <li>Introduction to AI and Generative AI</li>
+        <li>Being cautious about misinformation or deep fakes</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- Features Section -->
+<section class="container" style="padding: 0px 0">
+  <div class="features">
+    <div class="feature-card">
+      <div class="feature-icon">
+        <i class="fas fa-hands-helping"></i>
+      </div>
+      <h3>Hands-On Learning</h3>
+      <p>
+        Our practical approach ensures you're not just learning theory but
+        actually using technology in every class.
+      </p>
+    </div>
+
+    <div class="feature-card">
+      <div class="feature-icon">
+        <i class="fas fa-users"></i>
+      </div>
+      <h3>Supportive Community</h3>
+      <p>
+        Learn alongside peers at similar skill levels with dedicated teaching
+        assistants for personalized help.
+      </p>
+    </div>
+
+    <div class="feature-card">
+      <div class="feature-icon">
+        <i class="fas fa-graduation-cap"></i>
+      </div>
+      <h3>Flashcard System</h3>
+      <p>
+        Reinforce learning with our weekly flashcard assignments on platforms
+        like Quizlet to practice between classes.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- What's Included -->
+<section class="container" style="padding: 60px 0">
+  <h2 style="color: var(--dark); margin-bottom: 40px; text-align: center">
+    What's Included
+  </h2>
+
+  <div
+    style="
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    "
+  >
+    <div
+      style="
+        background: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      "
+    >
+      <div
+        style="font-size: 2.5rem; color: var(--primary); margin-bottom: 15px"
+      >
+        <i class="fas fa-video"></i>
+      </div>
+      <h4 style="color: var(--dark); margin-bottom: 10px">6 Live Classes</h4>
+      <p style="color: var(--text-light)">
+        Weekly 1.5-hour interactive sessions on Zoom with your instructor and
+        classmates.
+      </p>
+    </div>
+
+    <div
+      style="
+        background: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      "
+    >
+      <div
+        style="font-size: 2.5rem; color: var(--primary); margin-bottom: 15px"
+      >
+        <i class="fas fa-tasks"></i>
+      </div>
+      <h4 style="color: var(--dark); margin-bottom: 10px">
+        Weekly Assignments
+      </h4>
+      <p style="color: var(--text-light)">
+        Flashcard quizzes on Quizlet to reinforce learning and practice between
+        classes.
+      </p>
+    </div>
+
+    <div
+      style="
+        background: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      "
+    >
+      <div
+        style="font-size: 2.5rem; color: var(--primary); margin-bottom: 15px"
+      >
+        <i class="fas fa-hands-helping"></i>
+      </div>
+      <h4 style="color: var(--dark); margin-bottom: 10px">
+        One-on-One Support
+      </h4>
+      <p style="color: var(--text-light)">
+        Access to instructors via email and WhatsApp for questions and technical
+        help.
+      </p>
+    </div>
+
+    <div
+      style="
+        background: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      "
+    >
+      <div
+        style="font-size: 2.5rem; color: var(--primary); margin-bottom: 15px"
+      >
+        <i class="fas fa-book"></i>
+      </div>
+      <h4 style="color: var(--dark); margin-bottom: 10px">Course Materials</h4>
+      <p style="color: var(--text-light)">
+        Downloadable worksheets, video tutorials, and reference guides for
+        offline learning.
+      </p>
+    </div>
+
+    <div
+      style="
+        background: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      "
+    >
+      <div
+        style="font-size: 2.5rem; color: var(--primary); margin-bottom: 15px"
+      >
+        <i class="fas fa-certificate"></i>
+      </div>
+      <h4 style="color: var(--dark); margin-bottom: 10px">Certificate</h4>
+      <p style="color: var(--text-light)">
+        Completion certificate recognizing your achievement in digital literacy.
+      </p>
+    </div>
+
+    <div
+      style="
+        background: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      "
+    >
+      <div
+        style="font-size: 2.5rem; color: var(--primary); margin-bottom: 15px"
+      >
+        <i class="fas fa-users"></i>
+      </div>
+      <h4 style="color: var(--dark); margin-bottom: 10px">Community</h4>
+      <p style="color: var(--text-light)">
+        Join a supportive community of fellow learners for peer support and
+        friendship.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Who This Course Is For -->
+{% comment %} <section
+  class="container"
+  style="
+    padding: 60px 0;
+    background-color: var(--light);
+    margin: 0 -20px;
+    padding-left: 20px;
+    padding-right: 20px;
+  "
+>
+  <div style="max-width: 900px; margin: 0 auto">
+    <h2 style="color: var(--dark); margin-bottom: 40px; text-align: center">
+      Who This Course Is For
+    </h2>
+
+    <div
+      style="
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 25px;
+      "
+    >
+      <div style="background: white; padding: 25px; border-radius: 10px">
+        <h4 style="color: var(--primary); margin-bottom: 10px">
+          <i class="fas fa-check-circle"></i> Complete Beginners
+        </h4>
+        <p style="color: var(--text); margin: 0">
+          No prior tech experience needed. We start from the very basics and
+          move at a comfortable pace.
+        </p>
+      </div>
+
+      <div style="background: white; padding: 25px; border-radius: 10px">
+        <h4 style="color: var(--primary); margin-bottom: 10px">
+          <i class="fas fa-check-circle"></i> Seniors (45+)
+        </h4>
+        <p style="color: var(--text); margin: 0">
+          Designed specifically for older adults who want to stay connected with
+          family and access online services.
+        </p>
+      </div>
+
+      <div style="background: white; padding: 25px; border-radius: 10px">
+        <h4 style="color: var(--primary); margin-bottom: 10px">
+          <i class="fas fa-check-circle"></i> Anxious Learners
+        </h4>
+        <p style="color: var(--text); margin: 0">
+          Small class sizes and patient instructors create a judgment-free, safe
+          learning environment.
+        </p>
+      </div>
+
+      <div style="background: white; padding: 25px; border-radius: 10px">
+        <h4 style="color: var(--primary); margin-bottom: 10px">
+          <i class="fas fa-check-circle"></i> Family Members
+        </h4>
+        <p style="color: var(--text); margin: 0">
+          Want to help a parent or grandparent get tech-confident? This course
+          is perfect for them.
+        </p>
+      </div>
+
+      <div style="background: white; padding: 25px; border-radius: 10px">
+        <h4 style="color: var(--primary); margin-bottom: 10px">
+          <i class="fas fa-check-circle"></i> Phone-Only Users
+        </h4>
+        <p style="color: var(--text); margin: 0">
+          The course works on smartphones. You don't need a computer if you have
+          a mobile device.
+        </p>
+      </div>
+
+      <div style="background: white; padding: 25px; border-radius: 10px">
+        <h4 style="color: var(--primary); margin-bottom: 10px">
+          <i class="fas fa-check-circle"></i> Anyone Ready to Learn
+        </h4>
+        <p style="color: var(--text); margin: 0">
+          If you're curious about technology and willing to try, you belong
+          here. Age is just a number!
+        </p>
+      </div>
+    </div>
+  </div>
+</section> {% endcomment %}
+
+
+
+<!-- CTA Section -->
+<section class="container" style="padding: 20px 0">
+  <div
+    style="
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      padding: 60px 40px;
+      border-radius: 10px;
+      text-align: center;
+    "
+  >
+    <h2 style="margin-bottom: 15px; font-size: 2rem">
+      Ready to Start Your Digital Journey?
+    </h2>
+    <p style="opacity: 0.9; font-size: 1.1rem; margin-bottom: 30px">
+      Join our next cohort and gain the skills to navigate technology with
+      confidence
+    </p>
+
+    <div
+      style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap"
+    >
+      <a
+        href="{% url 'contact' %}"
+        class="btn btn-accent"
+        style="display: inline-block; text-decoration: none; padding: 15px 30px"
+      >
+        <i class="fas fa-question-circle"></i> Ask Questions
+      </a>
+      <a
+        href="{% url 'home' %}#course"
+        class="btn btn-outline"
+        style="
+          display: inline-block;
+          text-decoration: none;
+          padding: 15px 30px;
+          background-color: white;
+          color: var(--primary);
+        "
+      >
+        <i class="fas fa-arrow-left"></i> Back to Home
+      </a>
+    </div>
+  </div>
+</section>
+
+{% endblock content %}
