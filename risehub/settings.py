@@ -25,10 +25,7 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['risehub.site', 'www.risehub.site', '.railway.app']
-
-
-
+ALLOWED_HOSTS = ['risehub.site', 'www.risehub.site', '*.railway.app', 'localhost', '127.0.0.1']
 
 # Application definition
 
@@ -81,7 +78,8 @@ import dj_database_url
 DATABASES = {
     'default': dj_database_url.config(
         default=f'sqlite:///{BASE_DIR / "db.sqlite3"}',
-        conn_max_age=600
+        conn_max_age=600,
+        conn_health_checks=True,
     )
 }
 
