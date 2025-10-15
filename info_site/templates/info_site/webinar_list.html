@@ -103,9 +103,9 @@
                 <p style="color: var(--text-light); margin-bottom: 30px;">
                     We don't have any webinars scheduled at the moment, but check back soon!
                 </p>
-                <a href="{% url 'interest_form' %}" class="btn btn-primary" style="text-decoration: none;">
+                {% comment %} <a href="{% url 'interest_form' %}" class="btn btn-primary" style="text-decoration: none;">
                     <i class="fas fa-clipboard-list"></i> Express Your Interest Instead
-                </a>
+                </a> {% endcomment %}
             </div>
         {% endif %}
         
@@ -117,9 +117,9 @@
                 with hands-on practice and personalized support.
             </p>
             <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
-                <a href="{% url 'interest_form' %}" class="btn btn-accent" style="text-decoration: none;">
+                {% comment %} <a href="{% url 'interest_form' %}" class="btn btn-accent" style="text-decoration: none;">
                     <i class="fas fa-clipboard-check"></i> Express Interest in Full Course
-                </a>
+                </a> {% endcomment %}
                 <a href="{% url 'home' %}#course" class="btn btn-outline" style="text-decoration: none; background-color: white; color: var(--primary);">
                     <i class="fas fa-info-circle"></i> Learn More About the Course
                 </a>

@@ -41,56 +41,58 @@ def about_view(request):
     """About us page"""
     return render(request, 'info_site/about.html', {'page_title': 'About Us'})
 
+def facilitators_view(request):
+    return render(request, 'info_site/facilitators.html')
 
-def interest_form_view(request):
-    """Handle interest/enrollment form"""
-    if request.method == 'POST':
-        form = InterestFormSubmission(request.POST)
-        if form.is_valid():
-            interest = form.save()
+# def interest_form_view(request):
+#     """Handle interest/enrollment form"""
+#     if request.method == 'POST':
+#         form = InterestFormSubmission(request.POST)
+#         if form.is_valid():
+#             interest = form.save()
             
-            # Send confirmation email to student
-            try:
-                send_mail(
-                    subject='Thank You for Your Interest in Rise Hub!',
-                    message=f'''
-                    Dear {interest.full_name},
+#             # Send confirmation email to student
+#             try:
+#                 send_mail(
+#                     subject='Thank You for Your Interest in Rise Hub!',
+#                     message=f'''
+#                     Dear {interest.full_name},
                     
-                    Thank you for your interest in {interest.interested_course.title}!
+#                     Thank you for your interest in {interest.interested_course.title}!
                     
-                    Our team will contact you within 24-48 hours to schedule your free 
-                    technology assessment call and answer any questions you may have.
+#                     Our team will contact you within 24-48 hours to schedule your free 
+#                     technology assessment call and answer any questions you may have.
                     
-                    We're excited to help you on your digital learning journey!
+#                     We're excited to help you on your digital learning journey!
                     
-                    Best regards,
-                    The Rise Hub Team
+#                     Best regards,
+#                     The Rise Hub Team
                     
-                    Contact: info@risehub.site
-                    ''',
-                    from_email=settings.DEFAULT_FROM_EMAIL,
-                    recipient_list=[interest.email],
-                    fail_silently=True,
-                )
-            except Exception as e:
-                # Log error but don't fail the submission
-                print(f"Email error: {e}")
+#                     Contact: info@risehub.site
+#                     ''',
+#                     from_email=settings.DEFAULT_FROM_EMAIL,
+#                     recipient_list=[interest.email],
+#                     fail_silently=True,
+#                 )
+#             except Exception as e:
+#                 # Log error but don't fail the submission
+#                 print(f"Email error: {e}")
             
-            messages.success(
-                request,
-                'Thank you! We\'ve received your interest form. '
-                'Our team will contact you within 24-48 hours to schedule '
-                'your free technology assessment call.'
-            )
-            return redirect('home')
-    else:
-        form = InterestFormSubmission()
+#             messages.success(
+#                 request,
+#                 'Thank you! We\'ve received your interest form. '
+#                 'Our team will contact you within 24-48 hours to schedule '
+#                 'your free technology assessment call.'
+#             )
+#             return redirect('home')
+#     else:
+#         form = InterestFormSubmission()
     
-    context = {
-        'form': form,
-        'page_title': 'Express Your Interest',
-    }
-    return render(request, 'info_site/interest_form.html', context)
+#     context = {
+#         'form': form,
+#         'page_title': 'Express Your Interest',
+#     }
+#     return render(request, 'info_site/interest_form.html', context)
 
 
 def contact_view(request):

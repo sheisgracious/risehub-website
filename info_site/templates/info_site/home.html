@@ -24,11 +24,10 @@
       supportive, patient learning environment.
     </p>
     <div class="hero-buttons">
-      <a href="{% url 'interest_form' %}" class="btn btn-accent" style="text-decoration: none; display: inline-block;">Express Your Interest</a>
       {% if webinars %}
         <a href="{% url 'webinar_list' %}" class="btn btn-outline" style="text-decoration: none; display: inline-block;">Join Free Webinar</a>
       {% else %}
-        <a href="{% url 'contact' %}" class="btn btn-outline" style="text-decoration: none; display: inline-block;">Ask a Question</a>
+        <a href="{% url 'contact' %}" class="btn btn-accent" style="text-decoration: none; display: inline-block;">Ask a Question</a>
       {% endif %}
     </div>
   </div>
@@ -93,9 +92,9 @@
         </p>
       {% endif %}
 
-      <div class="enroll-btn">
+      {% comment %} <div class="enroll-btn">
         <a href="{% url 'interest_form' %}" class="btn btn-primary" style="text-decoration: none; display: inline-block;">Enroll Now</a>
-      </div>
+      </div> {% endcomment %}
     </div>
   </div>
 </section>
@@ -249,7 +248,6 @@
       need to navigate today's digital world with confidence.
     </p>
     <div style="display: flex; justify-content: center; gap: 20px; margin-top: 30px; flex-wrap: wrap;">
-      <a href="{% url 'interest_form' %}" class="btn btn-primary" style="text-decoration: none; display: inline-block;">Express Your Interest</a>
       <a href="{% url 'contact' %}" class="btn btn-outline" style="text-decoration: none; display: inline-block;">Ask A Question</a>
     </div>
   </div>

@@ -39,9 +39,9 @@
                     <i class="fas fa-book"></i> Course Details
                 </a>
                 
-                <a href="{% url 'interest_form' %}" style="padding: 15px; background-color: var(--light); border-radius: 5px; text-decoration: none; color: var(--text); transition: all 0.3s;" onmouseover="this.style.backgroundColor='var(--primary)'; this.style.color='white';" onmouseout="this.style.backgroundColor='var(--light)'; this.style.color='var(--text)';">
+                {% comment %} <a href="{% url 'interest_form' %}" style="padding: 15px; background-color: var(--light); border-radius: 5px; text-decoration: none; color: var(--text); transition: all 0.3s;" onmouseover="this.style.backgroundColor='var(--primary)'; this.style.color='white';" onmouseout="this.style.backgroundColor='var(--light)'; this.style.color='var(--text)';">
                     <i class="fas fa-clipboard-list"></i> Express Interest
-                </a>
+                </a> {% endcomment %}
                 
                 <a href="{% url 'webinar_list' %}" style="padding: 15px; background-color: var(--light); border-radius: 5px; text-decoration: none; color: var(--text); transition: all 0.3s;" onmouseover="this.style.backgroundColor='var(--primary)'; this.style.color='white';" onmouseout="this.style.backgroundColor='var(--light)'; this.style.color='var(--text)';">
                     <i class="fas fa-video"></i> Free Webinars

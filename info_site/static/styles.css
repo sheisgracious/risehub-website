@@ -50,7 +50,7 @@ header {
   /* padding: 15px 0; */
 }
 
- .logo {
+.logo {
   display: flex;
   align-items: center;
 }
@@ -116,14 +116,14 @@ nav ul li a:hover {
 }
 
 .btn-outline {
-  background-color: transparent;
-  border: 2px solid var(--primary);
-  color: var(--primary);
+  background-color: var(--primary);
+  color: var(--white);
 }
 
 .btn-outline:hover {
-  background-color: var(--primary);
-  color: var(--white);
+  background-color: transparent;
+  border: 2px solid var(--primary);
+  color: var(--primary);
 }
 
 .btn-accent {

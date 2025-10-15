@@ -7,9 +7,10 @@ urlpatterns = [
     # Public pages
     path('', views.home, name='home'),
     path('about/', views.about_view, name='about'), 
-    path('interest/', views.interest_form_view, name='interest_form'),
     path('contact/', views.contact_view, name='contact'),
     path('course/<int:course_id>/', views.course_detail_view, name='course_detail'),
+    path('facilitators/', views.facilitators_view, name='facilitators'),
+
     
     # Webinar pages
     path('webinars/', views.webinar_list_view, name='webinar_list'),
