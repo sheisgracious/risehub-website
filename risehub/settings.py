@@ -11,6 +11,9 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
+import os
+from dotenv import load_dotenv
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,12 +23,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 import os
-SECRET_KEY = os.getenv("SECRET_KEY", "django-insecure-fallback-key-" + "x" * 50)
+SECRET_KEY = os.environ.get("SECRET_KEY", "django-insecure-fallback-key-" + "x" * 50)
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['risehub.site', 'www.risehub.site', '*.railway.app', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['risehub.site', 'www.risehub.site', '*.railway.app']
 
 # Application definition
 
@@ -140,14 +143,26 @@ handler403 = 'info_site.views.access_forbidden'
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
-SECURE_SSL_REDIRECT = False  # temporarily disable Django redirect
+SECURE_SSL_REDIRECT = True  # temporarily disable Django redirect
 SECURE_HSTS_SECONDS = 31536000
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 SECURE_HSTS_PRELOAD = True
-
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 
 # Authentication URLs 
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'student_dashboard'
 LOGOUT_REDIRECT_URL = 'home'
+
+# Email Settings
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD")
+DEFAULT_FROM_EMAIL = "Rise Hub <info@rophejewels.com>"
+ADMIN_EMAIL = 'info@rophejewels.com'
+
+

@@ -102,6 +102,54 @@ def contact_view(request):
         if form.is_valid():
             contact = form.save()
             
+            # Send email to admin
+            try:
+                send_mail(
+                    subject=f'New Contact Form: {contact.subject}',
+                    message=f'''
+New contact form submission from Rise Hub:
+
+Name: {contact.name}
+Email: {contact.email}
+Phone: {contact.phone or 'Not provided'}
+Subject: {contact.subject}
+
+Message:
+{contact.message}
+
+---
+Submitted at: {contact.created_at.strftime('%B %d, %Y at %I:%M %p')}
+                    ''',
+                    from_email=settings.EMAIL_HOST_USER,
+                    recipient_list=['info@rophejewels.com'],
+                    fail_silently=False,
+                )
+                
+                # Send confirmation to user
+                send_mail(
+                    subject='Thank you for contacting Rise Hub',
+                    message=f'''
+Dear {contact.name},
+
+Thank you for reaching out to Rise Hub! We've received your message about "{contact.subject}".
+
+Our team will review your inquiry and get back to you within 24-48 hours.
+
+Best regards,
+The Rise Hub Team
+
+---
+This is an automated confirmation. Please do not reply to this email.
+Contact us at info@risehub.site for any questions.
+                    ''',
+                    from_email=settings.EMAIL_HOST_USER,
+                    recipient_list=[contact.email],
+                    fail_silently=True,  # Don't fail if user email fails
+                )
+            except Exception as e:
+                print(f"Email error: {e}")
+                # Still show success message even if email fails
+            
             messages.success(
                 request,
                 'Thank you for contacting us! We\'ll respond to your message shortly.'
@@ -115,7 +163,6 @@ def contact_view(request):
         'page_title': 'Contact Us',
     }
     return render(request, 'info_site/contact.html', context)
-
 
 def webinar_registration_view(request, webinar_id):
     """Handle webinar registration"""
