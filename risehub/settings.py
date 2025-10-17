@@ -28,7 +28,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY", "django-insecure-fallback-key-" + "x" 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['risehub.site', 'www.risehub.site', '*.railway.app']
+ALLOWED_HOSTS = ['risehub.site', 'www.risehub.site', '*.railway.app', 'localhost', '127.0.0.1']
 
 # Application definition
 
@@ -143,8 +143,10 @@ handler403 = 'info_site.views.access_forbidden'
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
-SECURE_SSL_REDIRECT = True  # temporarily disable Django redirect
-SECURE_HSTS_SECONDS = 31536000
+if DEBUG:
+    SECURE_SSL_REDIRECT = False
+else:
+    SECURE_SSL_REDIRECT = TrueSECURE_HSTS_SECONDS = 31536000
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 SECURE_HSTS_PRELOAD = True
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')

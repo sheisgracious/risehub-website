@@ -57,4 +57,3 @@ htmlcov/
 .coverage
 .coverage.*
 /media/
-staticfiles/
