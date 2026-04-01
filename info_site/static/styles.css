@@ -33,58 +33,59 @@ body {
   padding: 0 20px;
 }
 
-/* Header Styles */
+/* ─── Header ─────────────────────────────────────────────────────────────── */
 header {
   background-color: var(--white);
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   position: sticky;
   top: 0;
   z-index: 100;
-  padding: 0;
+  padding: 15px;
 }
 
 .header-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* padding: 15px 0; */
+  padding: 0 20px;
+  height: 70px;
 }
 
 .logo {
   display: flex;
   align-items: center;
+  flex-shrink: 0;
 }
 
 .logo img {
-  height: 120px;
+  height: 220px;
+  width: auto;
   margin-right: 10px;
 }
-/* 
-.logo h1 {
-  color: var(--primary);
-  font-size: 1.8rem;
-  font-weight: 700;
-}
 
-.logo span {
-  color: var(--secondary);
-} */
+.footer-logo img {
+  height: 100px;
+  /* width: auto; */
+  filter: brightness(0) invert(1);
+}
 
 nav ul {
   display: flex;
   list-style: none;
+  align-items: center;
 }
 
 nav ul li {
-  margin-left: 30px;
+  margin-left: 25px;
 }
 
 nav ul li a {
   text-decoration: none;
   color: var(--text);
   font-weight: 600;
-  font-size: 1.1rem;
+  font-size: 1rem;
   transition: color 0.3s;
+  white-space: nowrap;
 }
 
 nav ul li a:hover {
@@ -93,7 +94,8 @@ nav ul li a:hover {
 
 .auth-buttons {
   display: flex;
-  gap: 15px;
+  gap: 10px;
+  flex-shrink: 0;
 }
 
 .btn {
@@ -136,6 +138,7 @@ nav ul li a:hover {
   color: var(--white);
 }
 
+/* FIX: hidden by default, shown only on mobile */
 .mobile-menu-btn {
   display: none;
   background: none;
@@ -143,9 +146,12 @@ nav ul li a:hover {
   font-size: 1.5rem;
   cursor: pointer;
   color: var(--primary);
+  padding: 8px;
+  margin-left: 10px;
+  flex-shrink: 0;
 }
 
-/* Hero Section */
+/* ─── Hero ───────────────────────────────────────────────────────────────── */
 .hero {
   background: linear-gradient(135deg, var(--primary), var(--secondary));
   color: var(--white);
@@ -171,7 +177,7 @@ nav ul li a:hover {
   margin-top: 30px;
 }
 
-/* Course Highlight Section */
+/* ─── Course Highlight ───────────────────────────────────────────────────── */
 .course-highlight {
   display: flex;
   align-items: center;
@@ -228,7 +234,7 @@ nav ul li a:hover {
   margin-top: 30px;
 }
 
-/* Syllabus Section */
+/* ─── Syllabus ───────────────────────────────────────────────────────────── */
 .syllabus {
   background-color: var(--white);
   border-radius: 10px;
@@ -275,34 +281,7 @@ nav ul li a:hover {
   top: -5px;
 }
 
-/* Features Section */
-.features {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 30px;
-  margin: 50px 0;
-}
-
-.feature-card {
-  background-color: var(--white);
-  border-radius: 10px;
-  padding: 30px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-}
-
-.feature-icon {
-  font-size: 2.5rem;
-  color: var(--primary);
-  margin-bottom: 20px;
-}
-
-.feature-card h3 {
-  font-size: 1.5rem;
-  margin-bottom: 15px;
-  color: var(--dark);
-}
-
-/* Webinar Section */
+/* ─── Webinar ────────────────────────────────────────────────────────────── */
 .webinar {
   background: linear-gradient(135deg, var(--secondary), var(--dark));
   color: var(--white);
@@ -323,87 +302,7 @@ nav ul li a:hover {
   opacity: 0.9;
 }
 
-/* Testimonials Section */
-.testimonials-container {
-  position: relative;
-  margin: 50px 0;
-}
-
-.testimonials-slider {
-  display: flex;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
-  -webkit-overflow-scrolling: touch;
-  gap: 30px;
-  padding: 20px 0;
-  margin: 0 -20px;
-}
-
-.testimonial-card {
-  min-width: 100%;
-  scroll-snap-align: start;
-  background-color: var(--white);
-  border-radius: 10px;
-  padding: 30px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-}
-
-.testimonial-content {
-  font-style: italic;
-  margin-bottom: 20px;
-  color: var(--text);
-}
-
-.testimonial-author {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-}
-
-.author-avatar {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  background-color: var(--gray);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--text-light);
-  font-size: 1.5rem;
-}
-
-.author-info h4 {
-  font-size: 1.1rem;
-  margin-bottom: 5px;
-}
-
-.author-info p {
-  color: var(--text-light);
-  font-size: 0.9rem;
-}
-
-.slider-controls {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  margin-top: 30px;
-}
-
-.slider-dot {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background-color: var(--gray);
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.slider-dot.active {
-  background-color: var(--primary);
-}
-
-/* CTA Section */
+/* ─── CTA ────────────────────────────────────────────────────────────────── */
 .cta {
   background-color: var(--white);
   border-radius: 10px;
@@ -425,7 +324,7 @@ nav ul li a:hover {
   color: var(--text-light);
 }
 
-/* Footer */
+/* ─── Footer ─────────────────────────────────────────────────────────────── */
 footer {
   background-color: var(--dark);
   color: var(--white);
@@ -446,13 +345,8 @@ footer {
 }
 
 .footer-logo img {
-  height: 40px;
+  height: 150px;
   margin-right: 10px;
-}
-
-.footer-logo h2 {
-  font-size: 1.5rem;
-  color: var(--white);
 }
 
 .footer-about p {
@@ -462,6 +356,7 @@ footer {
 
 .social-links {
   display: flex;
+  /* width: 200px; */
   gap: 15px;
 }
 
@@ -517,73 +412,7 @@ footer {
   font-size: 0.9rem;
 }
 
-/* Modal */
-.modal {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 1000;
-  justify-content: center;
-  align-items: center;
-}
-
-.modal-content {
-  background-color: var(--white);
-  border-radius: 10px;
-  width: 90%;
-  max-width: 500px;
-  padding: 30px;
-  position: relative;
-  animation: modalFadeIn 0.3s;
-}
-
-@keyframes modalFadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.close-modal {
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  font-size: 1.5rem;
-  cursor: pointer;
-  color: var(--text-light);
-  transition: color 0.3s;
-}
-
-.close-modal:hover {
-  color: var(--text);
-}
-
-.modal-title {
-  font-size: 1.5rem;
-  margin-bottom: 20px;
-  color: var(--dark);
-  text-align: center;
-}
-
-.form-group {
-  margin-bottom: 20px;
-}
-
-.form-group label {
-  display: block;
-  margin-bottom: 8px;
-  font-weight: 600;
-  color: var(--text);
-}
-
+/* ─── Forms ──────────────────────────────────────────────────────────────── */
 .form-control {
   width: 100%;
   padding: 12px 15px;
@@ -598,34 +427,94 @@ footer {
   border-color: var(--primary);
 }
 
-.form-footer {
-  text-align: center;
-  margin-top: 20px;
+/* Mobile-only nav item (login/logout inside hamburger menu) */
+.mobile-auth-item {
+  display: none;
 }
 
-.form-footer p {
-  margin-top: 15px;
-  color: var(--text-light);
+/* ─── Responsive ─────────────────────────────────────────────────────────── */
+
+/* Mobile-only nav item (login/logout inside hamburger menu) */
+.mobile-auth-item {
+  display: none;
 }
 
-.form-footer a {
-  color: var(--primary);
-  text-decoration: none;
-  font-weight: 600;
-}
-
-/* Responsive Styles */
-@media (max-width: 992px) {
+@media (min-width: 993px) {
   .header-container {
-    padding: 15px;
+    position: relative;
   }
 
-  nav ul {
+  nav {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 992px) {
+  .header-container {
+    padding: 0 15px;
+    height: 64px;
+    position: relative;
+  }
+
+  .auth-buttons {
     display: none;
   }
 
   .mobile-menu-btn {
     display: block;
+    order: 1;
+  }
+
+  .logo {
+    order: 2;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  nav {
+    order: 3;
+  }
+
+  nav ul {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 64px;
+    left: 0;
+    right: 0;
+    width: 100%;
+    background-color: var(--white);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 0;
+    z-index: 99;
+  }
+
+  nav ul.mobile-open {
+    display: flex;
+  }
+
+  .mobile-auth-item {
+    display: block;
+  }
+
+  nav ul li {
+    margin: 0;
+    width: 100%;
+  }
+
+  nav ul li a {
+    display: block;
+    padding: 16px 24px;
+    font-size: 1rem;
+    border-bottom: 1px solid var(--light);
+  }
+
+  nav ul li a:hover {
+    background-color: var(--light);
+    color: var(--primary);
   }
 
   .course-highlight {
@@ -662,7 +551,7 @@ footer {
 
   .btn {
     width: 100%;
-    max-width: 250px;
+    max-width: 280px;
   }
 
   .course-details {
@@ -679,20 +568,55 @@ footer {
 }
 
 @media (max-width: 576px) {
-  .logo h1 {
-    font-size: 1.5rem;
-  }
-
   .hero {
     padding: 60px 0;
   }
 
   .course-meta {
-    flex-direction: column;
-    gap: 15px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .meta-item {
+    font-size: 0.85rem;
+  }
+
+  .enroll-btn {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .enroll-btn .btn {
+    width: auto;
+    max-width: none;
+    padding: 10px 18px;
+    font-size: 0.95rem;
   }
 
   .footer-container {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .footer-about {
+    grid-column: 1 / -1;
+  }
+
+  .footer-about p {
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+  }
+
+  .social-links a {
+    font-size: 1.6rem;
+  }
+
+  .footer-logo {
+    margin-bottom: 10px;
+  }
+
+  .footer-logo img {
+    height: 72px;
   }
 }

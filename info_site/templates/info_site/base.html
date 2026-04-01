@@ -5,89 +5,122 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Rise Hub | Digital Literacy for Seniors</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <link rel="stylesheet" href="{% static 'styles.css' %}" />
   </head>
   <body>
+
     <!-- Header -->
     <header>
       <div class="container header-container">
+
         <div class="logo">
-          <a
-            href="{% url 'home' %}"
-            style="text-decoration: none; display: flex; align-items: center"
-          >
+          <a href="{% url 'home' %}" style="text-decoration: none; display: flex; align-items: center;">
             <img src="{% static 'Rise_Hub_Logo.png' %}" alt="Rise Hub Logo" />
           </a>
         </div>
 
-        <button class="mobile-menu-btn">
-          <i class="fas fa-bars"></i>
-        </button>
-
+        <!-- Desktop Nav -->
         <nav>
           <ul>
             <li><a href="{% url 'home' %}">Home</a></li>
             <li><a href="{% url 'about' %}">About</a></li>
-            <li><a href="{% url 'home' %}#course">Course</a></li>
-            {% comment %} <li><a href="{% url 'home' %}#syllabus">Syllabus</a></li> {% endcomment %}
             <li><a href="{% url 'contact' %}">Contact</a></li>
             <li><a href="{% url 'facilitators' %}">Teach With Us</a></li>
             {% if user.is_authenticated %}
             <li><a href="{% url 'student_dashboard' %}">Dashboard</a></li>
             {% endif %}
+            <!-- Mobile-only auth links (hidden on desktop via CSS) -->
+            <li class="mobile-auth-item">
+              {% if user.is_authenticated %}
+              <form method="post" action="{% url 'logout' %}" style="margin: 0;">
+                {% csrf_token %}
+                <button type="submit" style="background: none; border: none; cursor: pointer; width: 100%; text-align: left; padding: 14px 24px; font-size: 1rem; font-weight: 600; color: var(--text); border-bottom: 1px solid var(--light);">
+                  Logout ({{ user.first_name|default:user.username }})
+                </button>
+              </form>
+              {% else %}
+              <a href="{% url 'login' %}">Login</a>
+              <a href="{% url 'student_register' %}" style="color: var(--primary); font-weight: 700;">Sign Up</a>
+              {% endif %}
+            </li>
           </ul>
         </nav>
 
+        <!-- Mobile menu toggle -->
+        <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false">
+          <i class="fas fa-bars"></i>
+        </button>
+
+        <!-- Desktop auth buttons (hidden on mobile via CSS) -->
         <div class="auth-buttons">
           {% if user.is_authenticated %}
-          <span
-            style="
-              color: var(--text);
-              margin-right: 15px;
-              display: flex;
-              align-items: center;
-            "
-          >
-            <i class="fas fa-user-circle" style="margin-right: 5px"></i>
+          <span style="color: var(--text); display: flex; align-items: center;">
+            <i class="fas fa-user-circle" style="margin-right: 5px;"></i>
             {{ user.first_name|default:user.username }}
           </span>
-          <form
-            method="post"
-            action="{% url 'logout' %}"
-            style="display: inline"
-          >
+          <form method="post" action="{% url 'logout' %}" style="display: inline;">
             {% csrf_token %}
-            <button
-              type="submit"
-              class="btn btn-outline"
-              style="border: none; cursor: pointer"
-            >
+            <button type="submit" class="btn btn-outline" style="border: none; cursor: pointer;">
               Logout
             </button>
           </form>
           {% else %}
-          <a
-            href="{% url 'login' %}"
-            class="btn btn-outline"
-            style="text-decoration: none"
-            >Login</a
-          >
-          <a
-            href="{% url 'student_register' %}"
-            class="btn btn-primary"
-            style="text-decoration: none"
-            >Sign Up</a
-          >
+          <a href="{% url 'login' %}" class="btn btn-outline" style="text-decoration: none;">Login</a>
+          <a href="{% url 'student_register' %}" class="btn btn-primary" style="text-decoration: none;">Sign Up</a>
           {% endif %}
         </div>
+
       </div>
     </header>
 
-    {% block content %} {% endblock content %}
+    {% block content %}{% endblock content %}
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="footer-container">
+
+          <div class="footer-about">
+            <div class="footer-logo">
+              <img src="{% static 'Rise_Hub_Logo.png' %}" alt="Rise Hub Logo" />
+            </div>
+            <p>Bridging the digital divide for seniors in Ghana through patient, accessible tech education.</p>
+            <div class="social-links">
+              <a href="https://www.facebook.com/risehubgh" target="_blank" aria-label="Facebook">
+                <i class="fab fa-facebook"></i>
+              </a>
+              <a href="https://www.linkedin.com/company/risehubgh" target="_blank" aria-label="LinkedIn">
+                <i class="fab fa-linkedin"></i>
+              </a>
+            </div>
+          </div>
+
+          <div class="footer-links">
+            <h3>Quick Links</h3>
+            <ul>
+              <li><a href="{% url 'home' %}">Home</a></li>
+              <li><a href="{% url 'about' %}">About Us</a></li>
+              <li><a href="{% url 'facilitators' %}">Teach With Us</a></li>
+              <li><a href="{% url 'webinar_list' %}">Free Webinars</a></li>
+              <li><a href="{% url 'contact' %}">Contact</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-contact">
+            <h3>Contact</h3>
+            <p><i class="fas fa-envelope"></i> info@risehub.site</p>
+            <p><i class="fas fa-map-marker-alt"></i> Accra, Ghana</p>
+            <p><i class="fas fa-clock"></i> Mon–Fri: 12PM–10PM GMT</p>
+          </div>
+
+        </div>
+
+        <div class="footer-bottom">
+          <p>&copy; {% now "Y" %} Rise Hub. All rights reserved. | Learn. Apply. Rise.</p>
+        </div>
+      </div>
+    </footer>
 
     <script src="{% static 'script.js' %}"></script>
   </body>

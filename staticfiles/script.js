@@ -1,38 +1,58 @@
-// Mobile Menu Toggle
+// ─── Mobile Menu ───────────────────────────────────────────────────────────
 const mobileMenuBtn = document.querySelector(".mobile-menu-btn");
-const nav = document.querySelector("nav ul");
+const navUl = document.querySelector("nav ul");
 
-mobileMenuBtn.addEventListener("click", () => {
-  nav.style.display = nav.style.display === "flex" ? "none" : "flex";
-});
-
-// Testimonial Slider
-const slider = document.getElementById("testimonials-slider");
-const dots = document.querySelectorAll(".slider-dot");
-let currentSlide = 0;
-
-function showSlide(index) {
-  slider.scrollTo({
-    left: slider.offsetWidth * index,
-    behavior: "smooth",
+if (mobileMenuBtn && navUl) {
+  mobileMenuBtn.addEventListener("click", () => {
+    const isOpen = navUl.classList.toggle("mobile-open");
+    mobileMenuBtn.setAttribute("aria-expanded", isOpen);
   });
 
-  dots.forEach((dot) => dot.classList.remove("active"));
-  dots[index].classList.add("active");
-  currentSlide = index;
+  // Close menu when a nav link is clicked
+  navUl.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      navUl.classList.remove("mobile-open");
+      mobileMenuBtn.setAttribute("aria-expanded", false);
+    });
+  });
+
+  // Close menu on resize back to desktop
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > 992) {
+      navUl.classList.remove("mobile-open");
+      mobileMenuBtn.setAttribute("aria-expanded", false);
+    }
+  });
 }
 
-dots.forEach((dot, index) => {
-  dot.addEventListener("click", () => showSlide(index));
-});
+// ─── Testimonial Slider (only if present on page) ──────────────────────────
+const slider = document.getElementById("testimonials-slider");
+const dots = document.querySelectorAll(".slider-dot");
 
-// Auto-advance slides every 5 seconds
-setInterval(() => {
-  currentSlide = (currentSlide + 1) % dots.length;
-  showSlide(currentSlide);
-}, 5000);
+if (slider && dots.length > 0) {
+  let currentSlide = 0;
 
-// Modal Handling
+  function showSlide(index) {
+    slider.scrollTo({
+      left: slider.offsetWidth * index,
+      behavior: "smooth",
+    });
+    dots.forEach((dot) => dot.classList.remove("active"));
+    dots[index].classList.add("active");
+    currentSlide = index;
+  }
+
+  dots.forEach((dot, index) => {
+    dot.addEventListener("click", () => showSlide(index));
+  });
+
+  setInterval(() => {
+    currentSlide = (currentSlide + 1) % dots.length;
+    showSlide(currentSlide);
+  }, 5000);
+}
+
+// ─── Modal Handling (only if modals exist on page) ─────────────────────────
 const loginBtn = document.getElementById("login-btn");
 const signupBtn = document.getElementById("signup-btn");
 const loginModal = document.getElementById("login-modal");
@@ -41,63 +61,74 @@ const closeModals = document.querySelectorAll(".close-modal");
 const switchToSignup = document.getElementById("switch-to-signup");
 const switchToLogin = document.getElementById("switch-to-login");
 
-// Show login modal
-loginBtn.addEventListener("click", () => {
-  loginModal.style.display = "flex";
-  document.body.style.overflow = "hidden";
-});
+if (loginBtn && loginModal) {
+  loginBtn.addEventListener("click", () => {
+    loginModal.style.display = "flex";
+    document.body.style.overflow = "hidden";
+  });
+}
 
-// Show signup modal
-signupBtn.addEventListener("click", () => {
-  signupModal.style.display = "flex";
-  document.body.style.overflow = "hidden";
-});
+if (signupBtn && signupModal) {
+  signupBtn.addEventListener("click", () => {
+    signupModal.style.display = "flex";
+    document.body.style.overflow = "hidden";
+  });
+}
 
-// Close modals
 closeModals.forEach((btn) => {
   btn.addEventListener("click", () => {
-    loginModal.style.display = "none";
-    signupModal.style.display = "none";
+    if (loginModal) loginModal.style.display = "none";
+    if (signupModal) signupModal.style.display = "none";
     document.body.style.overflow = "auto";
   });
 });
 
-// Switch between login and signup
-switchToSignup.addEventListener("click", (e) => {
-  e.preventDefault();
-  loginModal.style.display = "none";
-  signupModal.style.display = "flex";
-});
+if (switchToSignup && loginModal && signupModal) {
+  switchToSignup.addEventListener("click", (e) => {
+    e.preventDefault();
+    loginModal.style.display = "none";
+    signupModal.style.display = "flex";
+  });
+}
 
-switchToLogin.addEventListener("click", (e) => {
-  e.preventDefault();
-  signupModal.style.display = "none";
-  loginModal.style.display = "flex";
-});
+if (switchToLogin && loginModal && signupModal) {
+  switchToLogin.addEventListener("click", (e) => {
+    e.preventDefault();
+    signupModal.style.display = "none";
+    loginModal.style.display = "flex";
+  });
+}
 
-// Close modal when clicking outside
 window.addEventListener("click", (e) => {
-  if (e.target === loginModal) {
+  if (loginModal && e.target === loginModal) {
     loginModal.style.display = "none";
     document.body.style.overflow = "auto";
   }
-  if (e.target === signupModal) {
+  if (signupModal && e.target === signupModal) {
     signupModal.style.display = "none";
     document.body.style.overflow = "auto";
   }
 });
 
-// Form submission
-document.getElementById("login-form").addEventListener("submit", (e) => {
-  e.preventDefault();
-  alert("Login functionality would be implemented here");
-  loginModal.style.display = "none";
-  document.body.style.overflow = "auto";
-});
+const loginForm = document.getElementById("login-form");
+const signupForm = document.getElementById("signup-form");
 
-document.getElementById("signup-form").addEventListener("submit", (e) => {
-  e.preventDefault();
-  alert("Signup functionality would be implemented here");
-  signupModal.style.display = "none";
-  document.body.style.overflow = "auto";
-});
+if (loginForm) {
+  loginForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    if (loginModal) {
+      loginModal.style.display = "none";
+      document.body.style.overflow = "auto";
+    }
+  });
+}
+
+if (signupForm) {
+  signupForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    if (signupModal) {
+      signupModal.style.display = "none";
+      document.body.style.overflow = "auto";
+    }
+  });
+}
