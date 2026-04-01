@@ -3,24 +3,23 @@ const mobileMenuBtn = document.querySelector(".mobile-menu-btn");
 const navUl = document.querySelector("nav ul");
 
 if (mobileMenuBtn && navUl) {
-  mobileMenuBtn.addEventListener("click", () => {
-    const isOpen = navUl.classList.toggle("mobile-open");
-    mobileMenuBtn.setAttribute("aria-expanded", isOpen);
+  // Toggle on hamburger click
+  mobileMenuBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    navUl.classList.toggle("mobile-open");
   });
 
-  // Close menu when a nav link is clicked
+  // Close when a nav link is tapped
   navUl.querySelectorAll("a").forEach((link) => {
     link.addEventListener("click", () => {
       navUl.classList.remove("mobile-open");
-      mobileMenuBtn.setAttribute("aria-expanded", false);
     });
   });
 
-  // Close menu on resize back to desktop
-  window.addEventListener("resize", () => {
-    if (window.innerWidth > 992) {
+  // Close when tapping anywhere outside the menu
+  document.addEventListener("click", (e) => {
+    if (!navUl.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
       navUl.classList.remove("mobile-open");
-      mobileMenuBtn.setAttribute("aria-expanded", false);
     }
   });
 }
