@@ -453,9 +453,11 @@ footer {
 
 @media (max-width: 992px) {
   .header-container {
-    padding: 0 15px;
-    height: 64px;
+    padding: 0 20px;
+    height: 70px;
     position: relative;
+    display: flex;
+    align-items: center;
   }
 
   .auth-buttons {
@@ -463,15 +465,26 @@ footer {
   }
 
   .mobile-menu-btn {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     order: 1;
+    height: 70px;
+    font-size: 1.4rem;
+    padding: 0;
+    margin: 0;
+    flex-shrink: 0;
   }
 
   .logo {
-    order: 2;
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
+    order: 2;
+  }
+
+  .logo img {
+    height: 180px;
   }
 
   nav {
@@ -482,7 +495,7 @@ footer {
     display: none;
     flex-direction: column;
     position: absolute;
-    top: 64px;
+    top: 70px;
     left: 0;
     right: 0;
     width: 100%;
@@ -531,38 +544,6 @@ footer {
   }
 
   .webinar {
-    padding: 40px 20px;
-  }
-}
-
-@media (max-width: 768px) {
-  .hero h2 {
-    font-size: 1.8rem;
-  }
-
-  .hero p {
-    font-size: 1rem;
-  }
-
-  .hero-buttons {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .btn {
-    width: 100%;
-    max-width: 280px;
-  }
-
-  .course-details {
-    padding: 30px 20px;
-  }
-
-  .syllabus {
-    padding: 30px 20px;
-  }
-
-  .cta {
     padding: 40px 20px;
   }
 }
