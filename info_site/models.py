@@ -169,6 +169,15 @@ class WeekCurriculum(models.Model):
     def __str__(self):
         return f"{self.course.title} - Week {self.week_number}: {self.title}"
 
+# all roles
+class UserProfile(models.Model):
+    ROLES = [
+        ('senior', 'Senior'),
+        ('instructor', 'Instructor'), 
+        ('admin', 'Admin'),
+    ]
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    role = models.CharField(max_length=20, choices=ROLES, default='senior')
 
 # Student Enrollment Models
 class StudentProfile(models.Model):

@@ -27,4 +27,10 @@ urlpatterns = [
     path('enroll/', views.enrollment_view, name='enrollment'),
     path('enrollment/<int:enrollment_id>/payment/', views.enrollment_payment_view, name='enrollment_payment'),
     path('cohort/<int:cohort_id>/materials/', views.cohort_materials_view, name='cohort_materials'),
+
+    # Instructor portal
+    path('instructor/', views.instructor_dashboard_view, name='instructor_dashboard'),
+
+    # Admin portal
+    path('admin-dashboard/', views.admin_dashboard_view, name='admin_dashboard'),
 ]

@@ -213,6 +213,8 @@ def student_registration_view(request):
         if form.is_valid():
             user = form.save()
             login(request, user)
+            from .models import UserProfile
+            UserProfile.objects.create(user=user, role='senior')
             messages.success(
                 request,
                 'Welcome to Rise Hub! Please complete your profile to enroll in courses.'
@@ -269,8 +271,17 @@ def student_profile_view(request):
 
 @login_required
 def student_dashboard_view(request):
+    try:
+        role = request.user.userprofile.role
+    except:
+        role = 'senior'
+    
+    if role == 'admin':
+        return redirect('admin_dashboard')
+    elif role == 'instructor':
+        return redirect('instructor_dashboard')
+    
     enrollments = request.user.enrollments.all().order_by('-enrolled_at')
-
     context = {
         'enrollments': enrollments,
         'page_title': 'My Dashboard',
@@ -367,3 +378,18 @@ def cohort_materials_view(request, cohort_id):
         'page_title': f'{cohort.name} - Materials',
     }
     return render(request, 'info_site/cohort_materials.html', context)
+
+@login_required
+def instructor_dashboard_view(request):
+    context = {
+        'page_title': 'Instructor Dashboard',
+    }
+    return render(request, 'info_site/instructor_dashboard.html', context)
+
+
+@login_required
+def admin_dashboard_view(request):
+    context = {
+        'page_title': 'Admin Dashboard',
+    }
+    return render(request, 'info_site/admin_dashboard.html', context)
