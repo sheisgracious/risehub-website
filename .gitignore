@@ -57,3 +57,4 @@ htmlcov/
 .coverage
 .coverage.*
 /media/
+settings.py
