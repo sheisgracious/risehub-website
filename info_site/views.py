@@ -69,7 +69,7 @@ Submitted at: {contact.created_at.strftime('%B %d, %Y at %I:%M %p')}
                     ''',
                     from_email=settings.EMAIL_HOST_USER,
                     recipient_list=[settings.ADMIN_EMAIL],
-                    fail_silently=False,
+                    fail_silently=True,
                 )
 
                 send_mail(
