@@ -14,23 +14,23 @@ from .forms import (
     StudentRegistrationForm, StudentProfileForm, EnrollmentForm
 )
 
-import requests
+# import requests
 
 def send_resend_email(to, subject, message):
     import os
-    requests.post(
-        'https://api.resend.com/emails',
-        headers={
-            'Authorization': f'Bearer {os.environ.get("RESEND_API_KEY")}',
-            'Content-Type': 'application/json',
-        },
-        json={
-            'from': 'Rise Hub <info@risehub.site>',
-            'to': [to],
-            'subject': subject,
-            'text': message,
-        }
-    )
+    # requests.post(
+    #     'https://api.resend.com/emails',
+    #     headers={
+    #         'Authorization': f'Bearer {os.environ.get("RESEND_API_KEY")}',
+    #         'Content-Type': 'application/json',
+    #     },
+    #     json={
+    #         'from': 'Rise Hub <info@risehub.site>',
+    #         'to': [to],
+    #         'subject': subject,
+    #         'text': message,
+    #     }
+    # )
 
 def home(request):
     active_courses = Course.objects.filter(is_active=True)
