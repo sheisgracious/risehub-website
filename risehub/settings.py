@@ -101,8 +101,8 @@ handler500 = 'info_site.views.server_error'
 handler403 = 'info_site.views.access_forbidden'
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = not DEBUG
+CSRF_COOKIE_SECURE = not DEBUG
 
 # FIX: was "SECURE_SSL_REDIRECT = TrueSECURE_HSTS_SECONDS = 31536000" (syntax error)
 if DEBUG:
@@ -121,8 +121,9 @@ LOGOUT_REDIRECT_URL = 'home'
 # Email Settings — FIX: was pointing to rophejewels.com
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
+EMAIL_PORT = 465
+EMAIL_USE_TLS = False
+EMAIL_USE_SSL = True
 EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER")
 EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD")
 DEFAULT_FROM_EMAIL = "Rise Hub <info@risehub.site>"
