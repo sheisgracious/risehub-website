@@ -14,6 +14,23 @@ from .forms import (
     StudentRegistrationForm, StudentProfileForm, EnrollmentForm
 )
 
+import requests
+
+def send_resend_email(to, subject, message):
+    import os
+    requests.post(
+        'https://api.resend.com/emails',
+        headers={
+            'Authorization': f'Bearer {os.environ.get("RESEND_API_KEY")}',
+            'Content-Type': 'application/json',
+        },
+        json={
+            'from': 'Rise Hub <info@risehub.site>',
+            'to': [to],
+            'subject': subject,
+            'text': message,
+        }
+    )
 
 def home(request):
     active_courses = Course.objects.filter(is_active=True)
@@ -51,7 +68,8 @@ def contact_view(request):
 
             # FIX: was sending to info@rophejewels.com
             try:
-                send_mail(
+                send_resend_email(
+                    to=settings.ADMIN_EMAIL,
                     subject=f'New Contact Form: {contact.subject}',
                     message=f'''
 New contact form submission from Rise Hub:
@@ -72,7 +90,8 @@ Submitted at: {contact.created_at.strftime('%B %d, %Y at %I:%M %p')}
                     fail_silently=True,
                 )
 
-                send_mail(
+                send_resend_email(
+                    to=contact.email,
                     subject='Thank you for contacting Rise Hub',
                     message=f'''
 Dear {contact.name},
@@ -153,7 +172,7 @@ def webinar_registration_view(request, webinar_id):
             registration.save()
 
             try:
-                send_mail(
+                send_resend_email(
                     subject=f'Confirmed: {webinar.title}',
                     message=f'''
 Dear {registration.full_name},
