@@ -3,7 +3,7 @@
     "builder": "NIXPACKS"
   },
   "deploy": {
-    "startCommand": "cd risehub && python manage.py migrate && gunicorn risehub.wsgi:application",
+    "startCommand": "python manage.py migrate && gunicorn risehub.wsgi:application",
     "restartPolicyType": "ON_FAILURE",
     "restartPolicyMaxRetries": 10
   }
