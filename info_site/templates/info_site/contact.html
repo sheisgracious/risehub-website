@@ -9,7 +9,7 @@
             Have questions about our courses or work? Send us a message!
         </p>
         
-        {% if messages %}
+        {% comment %} {% if messages %}
         <div style="margin-bottom: 20px;">
             {% for message in messages %}
             <div style="padding: 15px; background-color: {% if message.tags == 'success' %}#d4edda{% elif message.tags == 'error' %}#f8d7da{% else %}#fff3cd{% endif %}; border: 1px solid {% if message.tags == 'success' %}#c3e6cb{% elif message.tags == 'error' %}#f5c6cb{% else %}#ffeaa7{% endif %}; border-radius: 5px; color: {% if message.tags == 'success' %}#155724{% elif message.tags == 'error' %}#721c24{% else %}#856404{% endif %};">
@@ -85,7 +85,7 @@
             <button type="submit" class="btn btn-primary" style="width: 100%; padding: 15px; font-size: 1.1rem;" onclick="if(this.form.checkValidity()){ this.innerHTML='Sending...'; this.disabled=true; }">
                 Send Message
             </button>
-        </form>
+        </form> {% endcomment %}
         
         <div style="margin-top: 30px; text-align: center; padding-top: 20px; border-top: 1px solid var(--gray);">
             <p style="color: var(--text);">
